@@ -11,6 +11,7 @@ function App() {
 
   return (
     <div className="App">
+      <h3>Hello!</h3>
       <h1>Page Count: {count}</h1>
     </div>
   );
