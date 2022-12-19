@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div className="App">
-      <h3>Hello!</h3>
+      <h1 className="text-3xl font-bold underline">Hello world!</h1>
       <h1>Page Count: {count}</h1>
     </div>
   );
