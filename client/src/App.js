@@ -8,6 +8,8 @@ function App() {
   const [count, setCount] = useState(0);
   const [currentUser, setCurrentUser] = useState(null);
 
+  console.log("Running!");
+
   /* useEffect(() => {
     fetch("/auth").then((res) => {
       if (res.ok) {
