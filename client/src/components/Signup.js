@@ -3,17 +3,20 @@ import { NavLink as Link } from "react-router-dom";
 import "../index.css";
 
 const Signup = ({ setCurrentUser }) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [role, setRole] = useState("");
+  const [errors, setErrors] = useState([]);
 
   function handleLoginSubmit(e) {
     e.preventDefault();
-    /*
+
     const user = {
-      username,
+      email,
       password,
       display_name: displayName,
+      role,
     };
 
     fetch("/users", {
@@ -26,12 +29,11 @@ const Signup = ({ setCurrentUser }) => {
       } else {
         console.log(errors);
       }
-    }); */
+    });
 
     console.log("Yes! Signup!");
-    setUsername("");
+    setEmail("");
     setPassword("");
-    setDisplayName("");
   }
 
   return (
@@ -44,8 +46,8 @@ const Signup = ({ setCurrentUser }) => {
         <input
           type="text"
           placeholder="Enter Email"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           id="email"
           required
         ></input>
@@ -64,7 +66,7 @@ const Signup = ({ setCurrentUser }) => {
         ></input>
         <br />
         <br />
-        <label htmlFor="psw">
+        <label htmlFor="display name">
           <b>Display Name: </b>
         </label>
         <input
@@ -72,11 +74,26 @@ const Signup = ({ setCurrentUser }) => {
           placeholder="Enter Display Name"
           value={displayName}
           onChange={(e) => setDisplayName(e.target.value)}
-          id="psw"
+          id="display"
           required
         ></input>
         <br />
         <br />
+        <label htmlFor="role">
+          <b>Role </b>
+        </label>
+        <select
+          type="text"
+          value={role}
+          onChange={(e) => setRole(e.target.value)}
+        >
+          <option value="" disabled>
+            Choose a Role...
+          </option>
+          <option value="student">Student</option>
+          <option value="teacher">Teacher</option>
+        </select>
+
         <p>By creating an account you agree to our Terms & Privacy</p>
         <button type="submit" className="registerbtn">
           Register!

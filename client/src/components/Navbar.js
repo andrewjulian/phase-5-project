@@ -2,7 +2,9 @@ import React from "react";
 import "../index.css";
 import { NavLink as Link, redirect } from "react-router-dom";
 
-const Navbar = ({ setCurrentUser }) => {
+const Navbar = ({ currentUser, setCurrentUser }) => {
+  const { display_name } = currentUser;
+
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
@@ -17,6 +19,7 @@ const Navbar = ({ setCurrentUser }) => {
       <nav className="navbar">
         <div className="title">AsynchEdu</div>
         <div className="navbar-items">
+          <p>{display_name}</p>
           <Link className="navbar-links" to="/mycourses">
             My Courses
           </Link>
@@ -25,6 +28,7 @@ const Navbar = ({ setCurrentUser }) => {
           </Link>
           <button onClick={handleLogoutClick}>Logout</button>
         </div>
+        <button onClick={handleLogoutClick}>Logout</button>
       </nav>
     </div>
   );

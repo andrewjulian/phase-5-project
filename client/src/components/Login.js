@@ -3,11 +3,12 @@ import { useState } from "react";
 import { NavLink as Link } from "react-router-dom";
 
 const Login = ({ setCurrentUser }) => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState([]);
 
-  function handleUsernameChange(event) {
-    setUsername(event.target.value);
+  function handleEmailChange(event) {
+    setEmail(event.target.value);
   }
   function handlePasswordChange(event) {
     setPassword(event.target.value);
@@ -16,25 +17,28 @@ const Login = ({ setCurrentUser }) => {
   function handleLoginSubmit(e) {
     e.preventDefault();
 
-    /* fetch("/login", {
+    fetch("/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username,
-        password
+        email,
+        password,
       }),
     }).then((r) => {
       if (r.ok) {
-        r.json().then((user) => setCurrentUser(user));
+        r.json().then((user) => {
+          setCurrentUser(user);
+          console.log("new user!");
+        });
       } else {
-        setErrors(errors)
+        setErrors(errors);
       }
-    }); */
+    });
 
     console.log("Yes! Login!");
-    setUsername("");
+    setEmail("");
     setPassword("");
   }
 
@@ -49,8 +53,8 @@ const Login = ({ setCurrentUser }) => {
           <input
             type="text"
             placeholder="Enter Email"
-            value={username}
-            onChange={handleUsernameChange}
+            value={email}
+            onChange={handleEmailChange}
             id="email"
             required
           ></input>
