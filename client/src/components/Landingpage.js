@@ -1,9 +1,12 @@
 import React from "react";
 
 const Landingpage = ({ currentUser }) => {
+  const { display_name, role } = currentUser;
+
   return (
     <div>
-      <p>Hello World</p>
+      <h1>Welcome {display_name}!</h1>
+      <h2>Your role is: {role}</h2>
     </div>
   );
 };

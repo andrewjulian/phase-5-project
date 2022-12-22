@@ -16,22 +16,35 @@ const Navbar = ({ currentUser, setCurrentUser }) => {
 
   return (
     <div>
-      <nav className="navbar">
+      <nav className="flex border-b">
         <div className="title">AsynchEdu</div>
         <div className="navbar-items">
           <p>{display_name}</p>
-          <Link className="navbar-links" to="/mycourses">
-            My Courses
+          <Link className="-mb-px mr-1" to="/mycourses">
+            <p className="bg-white inline-block border-l border-t border-r rounded-t py-2 px-4 text-blue-700 font-semibold">
+              My Courses
+            </p>
           </Link>
           <Link className="navbar-links" to="/coursecatalogue">
-            Course Catalog
+            <p>Course Catalog</p>
           </Link>
-          <button onClick={handleLogoutClick}>Logout</button>
+          <button
+            className="text-slate-500 hover:text-blue-600"
+            onClick={handleLogoutClick}
+          >
+            Logout
+          </button>
         </div>
-        <button onClick={handleLogoutClick}>Logout</button>
       </nav>
     </div>
   );
 };
 
 export default Navbar;
+
+<a
+  class="bg-white inline-block border-l border-t border-r rounded-t py-2 px-4 text-blue-700 font-semibold"
+  href="#"
+>
+  Active
+</a>;
