@@ -14,26 +14,30 @@ const SNavbar = ({ currentUser, setCurrentUser }) => {
     });
   }
   return (
-    <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
-      <div class="container flex flex-wrap items-center justify-between mx-auto">
-        <img
-          src="https://flowbite.com/docs/images/logo.svg"
-          class="h-6 mr-3 sm:h-9"
-          alt="Flowbite Logo"
-        />
-        <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-          AsyncEdu
-        </span>
-        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-          <div class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-            <Link to="/mycourses">
-              <p>Courses</p>
+    <nav className="bg-white border-gray-200 px-2 py-2.5 rounded">
+      <div className="container flex place-items-center justify-between mx-auto">
+        <div className="container flex flex-wrap">
+          <img
+            src="https://flowbite.com/docs/images/logo.svg"
+            className="h-6 mr-3 justify-start"
+            alt="Flowbite Logo"
+          />
+          <span className="justify-start text-xl font-semibold whitespace-nowrap dark:text-white">
+            AsyncEdu
+          </span>
+        </div>
+        <div className="w-full justify-end" id="navbar-default">
+          <div class="flex justify-end">
+            <Link className="mr-6" to="/mycourses">
+              <p className="text-blue-500 hover:text-blue-800">Courses</p>
             </Link>
-            <Link to="/coursecatalog">
-              <p>Course Catalog</p>
+            <Link className="mr-6" to="/coursecatalog">
+              <p className="text-blue-500 hover:text-blue-800">
+                Course Catalog
+              </p>
             </Link>
-            <Link to="/profile">
-              <p>Profile</p>
+            <Link className="mr-6" to="/profile">
+              <p className="text-blue-500 hover:text-blue-800">Profile</p>
             </Link>
             <button
               className="bg-blue-500 hover:bg-red-700 text-white font-bold px-3 rounded-full"
