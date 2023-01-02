@@ -27,8 +27,10 @@ const TNavbar = ({ currentUser, setCurrentUser }) => {
             AsyncEdu
           </span>
         </div>
+        <p className="mr-2">Welcome, </p>
+        <p>{display_name}!</p>
         <div className="w-full justify-end" id="navbar-default">
-          <div class="flex justify-end">
+          <div className="flex justify-end gap-x-2">
             <Link className="mr-6" to="/mycourses">
               <p className="text-blue-500 hover:text-blue-800">Courses</p>
             </Link>
