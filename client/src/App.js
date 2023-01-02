@@ -6,6 +6,8 @@ import Landingpage from "./components/Landingpage";
 import SNavbar from "./components/SNavbar";
 import TNavbar from "./components/TNavbar";
 
+/* new */
+
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
 
