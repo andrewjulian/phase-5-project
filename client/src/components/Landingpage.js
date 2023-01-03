@@ -1,4 +1,6 @@
 import React from "react";
+import TNavbar from "./TNavbar";
+import SNavbar from "./SNavbar";
 
 const Landingpage = ({ currentUser }) => {
   const { display_name, role } = currentUser;
