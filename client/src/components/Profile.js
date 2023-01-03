@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../context/userContext";
 
-const Profile = ({ currentUser }) => {
+const Profile = () => {
+  const [currentUser] = useContext(UserContext);
+
   const { display_name, role } = currentUser;
 
   return (

@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../index.css";
 import { NavLink as Link, redirect } from "react-router-dom";
 
-const TNavbar = ({ currentUser, setCurrentUser }) => {
+import { UserContext } from "../context/userContext";
+
+const TNavbar = () => {
+  const [currentUser, setCurrentUser] = useContext(UserContext);
+
   const { display_name } = currentUser;
 
   function handleLogoutClick() {

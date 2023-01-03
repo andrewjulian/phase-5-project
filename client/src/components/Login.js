@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { NavLink as Link } from "react-router-dom";
 
-const Login = ({ setCurrentUser }) => {
+import { UserContext } from "../context/userContext";
+
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+
+  const [currentUser, setCurrentUser] = useContext(UserContext);
 
   function handleEmailChange(event) {
     setEmail(event.target.value);
@@ -30,14 +34,12 @@ const Login = ({ setCurrentUser }) => {
       if (r.ok) {
         r.json().then((user) => {
           setCurrentUser(user);
-          console.log("new user!");
         });
       } else {
         setErrors(errors);
       }
     });
 
-    console.log("Yes! Login!");
     setEmail("");
     setPassword("");
   }

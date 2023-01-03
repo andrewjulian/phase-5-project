@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../context/userContext";
 
-const StudentCourses = ({ currentUser }) => {
+const StudentCourses = () => {
+  const [currentUser] = useContext(UserContext);
+
   const { display_name, role } = currentUser;
 
   return (

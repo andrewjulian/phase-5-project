@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
@@ -10,10 +10,14 @@ import Profile from "./components/Profile";
 import CourseCatalog from "./components/CourseCatalog";
 import TeacherCourses from "./components/TeacherCourses";
 
+import { UserContext } from "./context/userContext";
+
 /* new */
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(null);
+  //const [currentUser, setCurrentUser] = useState(null);
+
+  const [currentUser, setCurrentUser] = useContext(UserContext);
 
   useEffect(() => {
     fetch("/auth").then((res) => {
@@ -26,14 +30,8 @@ function App() {
   if (!currentUser) {
     return (
       <Routes>
-        <Route
-          path="/signup"
-          element={<Signup setCurrentUser={setCurrentUser} />}
-        />
-        <Route
-          path="/login"
-          element={<Login setCurrentUser={setCurrentUser} />}
-        />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     );
@@ -42,26 +40,12 @@ function App() {
   if (currentUser.role === "teacher") {
     return (
       <div className="App">
-        <TNavbar currentUser={currentUser} setCurrentUser={setCurrentUser} />
+        <TNavbar />
         <Routes>
-          <Route
-            path="/landingpage"
-            element={<Landingpage currentUser={currentUser} />}
-          />
-          <Route
-            path="/profile"
-            element={<Profile currentUser={currentUser} />}
-          />
-          <Route
-            path="/mycourses"
-            element={<TeacherCourses currentUser={currentUser} />}
-          />
-          <Route
-            path="*"
-            element={
-              <Navigate to="/landingpage" currentUser={currentUser} replace />
-            }
-          />
+          <Route path="/landingpage" element={<Landingpage />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/mycourses" element={<TeacherCourses />} />
+          <Route path="*" element={<Navigate to="/landingpage" replace />} />
         </Routes>
       </div>
     );
@@ -70,30 +54,13 @@ function App() {
   if (currentUser.role === "student") {
     return (
       <div className="App">
-        <SNavbar currentUser={currentUser} setCurrentUser={setCurrentUser} />
+        <SNavbar />
         <Routes>
-          <Route
-            path="/landingpage"
-            element={<Landingpage currentUser={currentUser} />}
-          />
-          <Route
-            path="/mycourses"
-            element={<StudentCourses currentUser={currentUser} />}
-          />
-          <Route
-            path="/coursecatalog"
-            element={<CourseCatalog currentUser={currentUser} />}
-          />
-          <Route
-            path="/profile"
-            element={<Profile currentUser={currentUser} />}
-          />
-          <Route
-            path="*"
-            element={
-              <Navigate to="/landingpage" currentUser={currentUser} replace />
-            }
-          />
+          <Route path="/landingpage" element={<Landingpage />} />
+          <Route path="/mycourses" element={<StudentCourses />} />
+          <Route path="/coursecatalog" element={<CourseCatalog />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="*" element={<Navigate to="/landingpage" replace />} />
         </Routes>
       </div>
     );

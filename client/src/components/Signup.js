@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { NavLink as Link } from "react-router-dom";
 import "../index.css";
+import { UserContext } from "../context/userContext";
 
-const Signup = ({ setCurrentUser }) => {
+const Signup = () => {
   const [displayName, setDisplayName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
   const [errors, setErrors] = useState([]);
+
+  const [currentUser, setCurrentUser] = useContext(UserContext);
 
   function handleLoginSubmit(e) {
     e.preventDefault();
@@ -31,7 +34,6 @@ const Signup = ({ setCurrentUser }) => {
       }
     });
 
-    console.log("Yes! Signup!");
     setEmail("");
     setPassword("");
   }
@@ -69,7 +71,7 @@ const Signup = ({ setCurrentUser }) => {
             >
               <div>
                 <label
-                  for="email"
+                  htmlFor="email"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Your Email

@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../index.css";
 import { NavLink as Link, redirect } from "react-router-dom";
 
-const SNavbar = ({ currentUser, setCurrentUser }) => {
+import { UserContext } from "../context/userContext";
+
+const SNavbar = () => {
+  const [currentUser, setCurrentUser] = useContext(UserContext);
+
   const { display_name } = currentUser;
 
   function handleLogoutClick() {
@@ -13,6 +17,7 @@ const SNavbar = ({ currentUser, setCurrentUser }) => {
       }
     });
   }
+
   return (
     <nav className="bg-white border-gray-200 px-2 py-2.5 rounded">
       <div className="container flex place-items-center justify-between mx-auto">
