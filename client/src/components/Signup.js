@@ -72,7 +72,7 @@ const Signup = ({ setCurrentUser }) => {
                   for="email"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  Your email
+                  Your Email
                 </label>
                 <input
                   type="text"
@@ -141,7 +141,7 @@ const Signup = ({ setCurrentUser }) => {
                 type="submit"
                 className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >
-                Register and Signin!
+                Register and Sign In!
               </button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Already Have An Account?{" "}
