@@ -19,7 +19,7 @@ const TNavbar = ({ currentUser, setCurrentUser }) => {
       <div className="container flex place-items-center justify-between mx-auto">
         <div className="container flex flex-wrap">
           <img
-            src="https://flowbite.com/docs/images/logo.svg"
+            src={process.env.PUBLIC_URL + "/asyncedu_logo.png"}
             className="h-6 mr-3 sm:h-9 justify-start"
             alt="Flowbite Logo"
           />
