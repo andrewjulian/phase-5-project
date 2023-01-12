@@ -84,7 +84,10 @@ function App() {
         <Routes>
           <Route path="/landingpage" element={<Landingpage />} />
           <Route path="/mycourses" element={<StudentCourses />} />
-          <Route path="/coursecatalog" element={<CourseCatalog />} />
+          <Route
+            path="/coursecatalog"
+            element={<CourseCatalog classrooms={classrooms} />}
+          />
           <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<Navigate to="/landingpage" replace />} />
         </Routes>

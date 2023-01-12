@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "../context/userContext";
 
-const TeacherCourses = ({ addClassroom, classrooms }) => {
+const TeacherCourses = ({ addClassroom }) => {
   const [currentUser] = useContext(UserContext);
 
   const { display_name, role } = currentUser;
@@ -10,11 +10,7 @@ const TeacherCourses = ({ addClassroom, classrooms }) => {
   const [subject, setSubject] = useState("");
   const [errors, setErrors] = useState([]);
 
-  function enroll() {
-    console.log("enroll!");
-  }
-
-  const displayClassrooms = classrooms.map((classroom, id) => {
+  const displayClassrooms = currentUser.classrooms.map((classroom, id) => {
     return (
       <div key={id} className="max-w-sm rounded overflow-hidden shadow-lg">
         <div className="px-6 py-4">
@@ -22,11 +18,8 @@ const TeacherCourses = ({ addClassroom, classrooms }) => {
           <p className="text-gray-700 text-base">{classroom.subject}</p>
         </div>
         <div className="px-6 pt-4 pb-2">
-          <button
-            onClick={enroll}
-            className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-          >
-            Enroll
+          <button className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+            Visit
           </button>
         </div>
       </div>
