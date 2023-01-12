@@ -14,6 +14,7 @@ const Login = () => {
   function handleEmailChange(event) {
     setEmail(event.target.value);
   }
+
   function handlePasswordChange(event) {
     setPassword(event.target.value);
   }

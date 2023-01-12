@@ -15,9 +15,8 @@ import { UserContext } from "./context/userContext";
 /* new */
 
 function App() {
-  //const [currentUser, setCurrentUser] = useState(null);
-
   const [currentUser, setCurrentUser] = useContext(UserContext);
+  const [classrooms, setClassrooms] = useState([]);
 
   useEffect(() => {
     fetch("/auth").then((res) => {
@@ -25,7 +24,26 @@ function App() {
         res.json().then((user) => setCurrentUser(user));
       }
     });
-  }, []);
+
+    fetch("/classrooms").then((res) => {
+      if (res.ok) {
+        res.json().then((r) => setClassrooms(r));
+      }
+    });
+  }, [setCurrentUser]);
+
+  console.log(classrooms);
+
+  function addClassroom(newClassroom) {
+    setClassrooms([...classrooms, newClassroom]);
+
+    setCurrentUser({
+      ...currentUser,
+      classrooms: [...currentUser.classrooms, newClassroom],
+    });
+
+    console.log(classrooms);
+  }
 
   if (!currentUser) {
     return (
@@ -44,7 +62,15 @@ function App() {
         <Routes>
           <Route path="/landingpage" element={<Landingpage />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/mycourses" element={<TeacherCourses />} />
+          <Route
+            path="/mycourses"
+            element={
+              <TeacherCourses
+                classrooms={classrooms}
+                addClassroom={addClassroom}
+              />
+            }
+          />
           <Route path="*" element={<Navigate to="/landingpage" replace />} />
         </Routes>
       </div>
