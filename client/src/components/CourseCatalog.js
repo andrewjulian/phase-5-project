@@ -1,13 +1,38 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { UserContext } from "../context/userContext";
 
 const CourseCatalog = ({ classrooms }) => {
   const [currentUser] = useContext(UserContext);
 
+  const [errors, setErrors] = useState([]);
+
   const { display_name, role } = currentUser;
 
-  function enroll() {
-    console.log("enroll!");
+  function enroll(e) {
+    console.log("enroll");
+
+    e.preventDefault();
+
+    fetch("/enrollments", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user_id: currentUser.id,
+        classroom_id: e.target.value,
+      }),
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then((r) => {
+          console.log(r);
+        });
+      } else {
+        r.json().then((err) => setErrors(err.errors));
+        console.log("booooo");
+        console.log(errors);
+      }
+    });
   }
 
   const displayClassrooms = classrooms.map((classroom, id) => {
@@ -20,6 +45,7 @@ const CourseCatalog = ({ classrooms }) => {
         <div className="px-6 pt-4 pb-2">
           <button
             onClick={enroll}
+            value={classroom.id}
             className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
           >
             Enroll

@@ -27,12 +27,12 @@ function App() {
 
     fetch("/classrooms").then((res) => {
       if (res.ok) {
-        res.json().then((r) => setClassrooms(r));
+        res.json().then((r) => {
+          setClassrooms(r);
+        });
       }
     });
   }, [setCurrentUser]);
-
-  console.log(classrooms);
 
   function addClassroom(newClassroom) {
     setClassrooms([...classrooms, newClassroom]);
@@ -41,8 +41,6 @@ function App() {
       ...currentUser,
       classrooms: [...currentUser.classrooms, newClassroom],
     });
-
-    console.log(classrooms);
   }
 
   if (!currentUser) {

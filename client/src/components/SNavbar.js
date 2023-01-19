@@ -7,8 +7,6 @@ import { UserContext } from "../context/userContext";
 const SNavbar = () => {
   const [currentUser, setCurrentUser] = useContext(UserContext);
 
-  const { display_name } = currentUser;
-
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
@@ -31,8 +29,6 @@ const SNavbar = () => {
             AsyncEdu
           </span>
         </div>
-        <p className="mr-2">Welcome, </p>
-        <p>{display_name}!</p>
         <div className="w-full justify-end" id="navbar-default">
           <div className="flex justify-end gap-x-2">
             <Link className="mr-6" to="/mycourses">
