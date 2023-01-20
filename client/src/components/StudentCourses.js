@@ -4,8 +4,9 @@ import { UserContext } from "../context/userContext";
 const StudentCourses = () => {
   const [currentUser] = useContext(UserContext);
 
-  const { display_name, role } = currentUser;
+  const { display_name, role, enrollments } = currentUser;
 
+  console.log("enrollments", { enrollments });
   return (
     <div>
       <p>Hello, {display_name}</p>

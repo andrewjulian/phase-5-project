@@ -1,7 +1,6 @@
 class EnrollmentsController < ApplicationController
 
   def create
-    byebug
     student = User.find(params[:user_id])
     classroom = Classroom.find(params[:classroom_id])
     newEnrollment = classroom.enrollments.create!(enrollment_params)
