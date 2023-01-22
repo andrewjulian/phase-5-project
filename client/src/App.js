@@ -18,6 +18,8 @@ function App() {
   const [currentUser, setCurrentUser] = useContext(UserContext);
   const [classrooms, setClassrooms] = useState([]);
 
+  console.log("currentUser", currentUser);
+
   useEffect(() => {
     fetch("/auth").then((res) => {
       if (res.ok) {
@@ -53,7 +55,7 @@ function App() {
     );
   }
 
-  if (currentUser.role === "teacher") {
+  if (currentUser.type === "Teacher") {
     return (
       <div className="App">
         <TNavbar />
@@ -75,7 +77,7 @@ function App() {
     );
   }
 
-  if (currentUser.role === "student") {
+  if (currentUser.type === "Student") {
     return (
       <div className="App">
         <SNavbar />

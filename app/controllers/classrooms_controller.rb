@@ -9,7 +9,7 @@ class ClassroomsController < ApplicationController
 
   def create
     user = User.find_by(id: session[:user_id])
-    if user.role === "teacher"
+    if user.type === "teacher"
       newClassroom = user.classrooms.create!(classroom_params)
       render json: newClassroom, status: :created
     else

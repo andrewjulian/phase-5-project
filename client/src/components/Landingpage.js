@@ -4,13 +4,13 @@ import { UserContext } from "../context/userContext";
 const Landingpage = () => {
   const [currentUser] = useContext(UserContext);
 
-  const { display_name, role } = currentUser;
+  const { display_name, type } = currentUser;
 
   return (
     <div>
       <h1>HI!</h1>
       <h1>Welcome {display_name}!</h1>
-      <h2>Your role is: {role}</h2>
+      <h2>Your role is: {type}</h2>
     </div>
   );
 };

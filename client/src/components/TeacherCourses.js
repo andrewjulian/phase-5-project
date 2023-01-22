@@ -4,7 +4,7 @@ import { UserContext } from "../context/userContext";
 const TeacherCourses = ({ addClassroom }) => {
   const [currentUser] = useContext(UserContext);
 
-  const { display_name, role } = currentUser;
+  const { display_name, type } = currentUser;
 
   const [name, setName] = useState("");
   const [subject, setSubject] = useState("");
@@ -58,7 +58,7 @@ const TeacherCourses = ({ addClassroom }) => {
   return (
     <div>
       <p>Hello, {display_name}!</p>
-      <p>You are a {role}</p>
+      <p>You are a {type}</p>
       <p>This is where the classes you teach can be found!</p>
       <br />
       <div className="grid grid-cols-4 gap-4">

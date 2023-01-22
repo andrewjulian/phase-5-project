@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # route to test your configuration
   
   post "/login", to: "sessions#create"
-  post "/users", to: "users#create"
+  post "/signup", to: "users#create"
   get "/auth", to: "users#show"
   delete "/logout", to: "sessions#destroy"
 

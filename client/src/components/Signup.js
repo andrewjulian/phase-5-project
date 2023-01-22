@@ -7,7 +7,7 @@ const Signup = () => {
   const [displayName, setDisplayName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [role, setRole] = useState("");
+  const [type, setType] = useState("");
   const [errors, setErrors] = useState([]);
 
   const [currentUser, setCurrentUser] = useContext(UserContext);
@@ -15,20 +15,22 @@ const Signup = () => {
   function handleLoginSubmit(e) {
     e.preventDefault();
 
-    const user = {
+    const newUser = {
       email,
       password,
       display_name: displayName,
-      role,
+      type: type,
     };
 
-    fetch("/users", {
+    console.log("newUser", newUser);
+
+    fetch("/signup", {
       method: "POST",
       headers: { "Content-type": "application/json" },
-      body: JSON.stringify(user),
+      body: JSON.stringify(newUser),
     }).then((res) => {
       if (res.ok) {
-        res.json().then(setCurrentUser(user));
+        res.json().then(setCurrentUser(newUser));
       } else {
         console.log(errors);
       }
@@ -123,19 +125,19 @@ const Signup = () => {
               </div>
 
               <div>
-                <label htmlFor="role">
+                <label htmlFor="type">
                   <b>Role </b>
                 </label>
                 <select
                   type="text"
-                  value={role}
-                  onChange={(e) => setRole(e.target.value)}
+                  value={type}
+                  onChange={(e) => setType(e.target.value)}
                 >
                   <option value="" disabled>
                     Choose a Role...
                   </option>
-                  <option value="student">Student</option>
-                  <option value="teacher">Teacher</option>
+                  <option value="Student">Student</option>
+                  <option value="Teacher">Teacher</option>
                 </select>
               </div>
 

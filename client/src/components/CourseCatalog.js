@@ -6,7 +6,7 @@ const CourseCatalog = ({ classrooms }) => {
 
   const [errors, setErrors] = useState([]);
 
-  const { display_name, role } = currentUser;
+  const { display_name, type } = currentUser;
 
   function enroll(e) {
     console.log("enroll");
@@ -59,7 +59,7 @@ const CourseCatalog = ({ classrooms }) => {
     <div>
       <p>Hello, {display_name}!</p>
       <p>This is your course catalog page</p>
-      <p>As a {role} you can sign up for new courses!</p>
+      <p>As a {type} you can sign up for new courses!</p>
       <br />
       <div className="grid grid-cols-4 gap-4">{displayClassrooms}</div>
     </div>

@@ -6,6 +6,7 @@ import { UserContext } from "../context/userContext";
 
 const TNavbar = () => {
   const [currentUser, setCurrentUser] = useContext(UserContext);
+
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
