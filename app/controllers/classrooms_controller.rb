@@ -9,12 +9,8 @@ class ClassroomsController < ApplicationController
 
   def create
     user = User.find_by(id: session[:user_id])
-    if user.type === "teacher"
-      newClassroom = user.classrooms.create!(classroom_params)
-      render json: newClassroom, status: :created
-    else
-      console.log("no!")
-    end
+    newClassroom = user.classrooms.create!(classroom_params)
+    render json: newClassroom, status: :created
   end
 
   private
@@ -23,7 +19,7 @@ class ClassroomsController < ApplicationController
     render json:{error: invalid.record.errors}, status: :unprocessable_entity
   end
 
-  def classroom_params()
+  def classroom_params
     params.permit(:id, :name, :subject)
   end
 

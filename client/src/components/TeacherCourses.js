@@ -10,21 +10,27 @@ const TeacherCourses = ({ addClassroom }) => {
   const [subject, setSubject] = useState("");
   const [errors, setErrors] = useState([]);
 
-  const displayClassrooms = currentUser.classrooms.map((classroom, id) => {
-    return (
-      <div key={id} className="max-w-sm rounded overflow-hidden shadow-lg">
-        <div className="px-6 py-4">
-          <div className="font-bold text-xl mb-2">{classroom.name}</div>
-          <p className="text-gray-700 text-base">{classroom.subject}</p>
+  let displayClassrooms = null;
+
+  /* if (currentUser.classrooms != 0) {
+    displayClassrooms = currentUser.classrooms.map((classroom, id) => {
+      return (
+        <div key={id} className="max-w-sm rounded overflow-hidden shadow-lg">
+          <div className="px-6 py-4">
+            <div className="font-bold text-xl mb-2">{classroom.name}</div>
+            <p className="text-gray-700 text-base">{classroom.subject}</p>
+          </div>
+          <div className="px-6 pt-4 pb-2">
+            <button className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+              Visit
+            </button>
+          </div>
         </div>
-        <div className="px-6 pt-4 pb-2">
-          <button className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-            Visit
-          </button>
-        </div>
-      </div>
-    );
-  });
+      );
+    });
+  } else {
+    displayClassrooms = "No Classes Yet";
+  } */
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -35,8 +41,8 @@ const TeacherCourses = ({ addClassroom }) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name,
-        subject,
+        name: name,
+        subject: subject,
       }),
     }).then((r) => {
       if (r.ok) {
@@ -92,7 +98,7 @@ const TeacherCourses = ({ addClassroom }) => {
             <button type="submit">Create!</button>
           </form>
         </div>
-        {displayClassrooms}
+        {/* {displayClassrooms} */}
       </div>
     </div>
   );

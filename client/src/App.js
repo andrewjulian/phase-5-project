@@ -18,8 +18,6 @@ function App() {
   const [currentUser, setCurrentUser] = useContext(UserContext);
   const [classrooms, setClassrooms] = useState([]);
 
-  console.log("currentUser", currentUser);
-
   useEffect(() => {
     fetch("/auth").then((res) => {
       if (res.ok) {
