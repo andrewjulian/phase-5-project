@@ -12,7 +12,7 @@ const TeacherCourses = ({ addClassroom }) => {
 
   let displayClassrooms = null;
 
-  /* if (currentUser.classrooms != 0) {
+  if (currentUser.classrooms.length != 0) {
     displayClassrooms = currentUser.classrooms.map((classroom, id) => {
       return (
         <div key={id} className="max-w-sm rounded overflow-hidden shadow-lg">
@@ -30,7 +30,7 @@ const TeacherCourses = ({ addClassroom }) => {
     });
   } else {
     displayClassrooms = "No Classes Yet";
-  } */
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -98,7 +98,7 @@ const TeacherCourses = ({ addClassroom }) => {
             <button type="submit">Create!</button>
           </form>
         </div>
-        {/* {displayClassrooms} */}
+        {displayClassrooms}
       </div>
     </div>
   );

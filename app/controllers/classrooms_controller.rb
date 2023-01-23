@@ -20,7 +20,7 @@ class ClassroomsController < ApplicationController
   end
 
   def classroom_params
-    params.permit(:id, :name, :subject)
+    params.permit(:id, :name, :subject, :teacher_id)
   end
 
 end

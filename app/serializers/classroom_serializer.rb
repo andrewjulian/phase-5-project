@@ -1,7 +1,8 @@
 class ClassroomSerializer < ActiveModel::Serializer
-  attributes :id, :name, :subject
+  attributes :id, :name, :subject, :teacher_id
 
   belongs_to :teacher
-  has_and_belongs_to_many :students, join_table: :enrollments
+  has_many :enrollments
+  has_many :students, through: :enrollments
   
 end
