@@ -2,7 +2,11 @@ import React, { useContext, useState } from "react";
 import { UserContext } from "../context/userContext";
 
 const CourseCatalog = ({ classrooms }) => {
-  const [currentUser] = useContext(UserContext);
+  const [currentUser, setCurrentUser, userEnrollUpdate] =
+    useContext(UserContext);
+
+  //need to add function that adds course to student enrollments on front end
+  //then set that as current user so it can be displayed on front end
 
   const [errors, setErrors] = useState([]);
 
@@ -25,7 +29,7 @@ const CourseCatalog = ({ classrooms }) => {
     }).then((r) => {
       if (r.ok) {
         r.json().then((r) => {
-          console.log(r);
+          userEnrollUpdate(r.classroom);
         });
       } else {
         r.json().then((err) => setErrors(err.errors));
