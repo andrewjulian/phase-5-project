@@ -10,7 +10,7 @@ const Landingpage = () => {
     <div>
       <h1>HI!</h1>
       <h1>Welcome {display_name}!</h1>
-      <h2>Your role is: {type}</h2>
+      <h2>Your role is: {type}, yes!</h2>
     </div>
   );
 };
