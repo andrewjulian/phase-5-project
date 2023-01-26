@@ -1,7 +1,8 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "../context/userContext";
+import ClassroomTile from "./ClassroomTile";
 
-const TeacherCourses = ({ addClassroom, removeClassroom }) => {
+const TeacherCourses = ({ addClassroom }) => {
   const [currentUser] = useContext(UserContext);
 
   const { display_name, type } = currentUser;
@@ -11,17 +12,6 @@ const TeacherCourses = ({ addClassroom, removeClassroom }) => {
   const [errors, setErrors] = useState([]);
 
   let displayClassrooms = null;
-
-  /*   function deleteClassroom() {
-    fetch(`/classrooms/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-type": "application/json",
-      },
-    })
-      .then((r) => r.json())
-      .then((data) => removeClassroom(data));
-  } */
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -52,13 +42,10 @@ const TeacherCourses = ({ addClassroom, removeClassroom }) => {
     setSubject("");
   }
 
-  if (currentUser.classrooms.length != 0) {
-    displayClassrooms = currentUser.classrooms.map((classroom) => {
+  if (currentUser.classrooms.length > 0) {
+    displayClassrooms = currentUser.classrooms.map((classroom, id) => {
       return (
-        <div
-          key={classroom.id}
-          className="max-w-sm rounded overflow-hidden shadow-lg"
-        >
+        <div key={id} className="max-w-sm rounded overflow-hidden shadow-lg">
           <div className="px-6 py-4">
             <div className="font-bold text-xl mb-2">{classroom.name}</div>
             <p className="text-gray-700 text-base">{classroom.subject}</p>
@@ -67,10 +54,7 @@ const TeacherCourses = ({ addClassroom, removeClassroom }) => {
             <button className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
               Visit
             </button>
-            <button
-              /* onClick={deleteClassroom} */
-              className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-            >
+            <button className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm    font-semibold text-gray-700 mr-2 mb-2">
               Delete
             </button>
           </div>

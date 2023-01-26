@@ -13,17 +13,6 @@ class ClassroomsController < ApplicationController
     render json: newClassroom, status: :created
   end
 
-  def destroy
-    user = User.find_by(id: session[:user_id])
-    classroom = user.classrooms.find_by(id: params[:id])
-    if question
-      question.destroy
-      render json: question
-    else 
-      render json: { error: "Classroom not found" }, status: :not_found
-    end
-  end
-
   private
 
   def render_unprocessable_entity(invalid)

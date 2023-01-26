@@ -8,7 +8,7 @@ const StudentCourses = () => {
 
   let displayClassrooms = null;
 
-  if (currentUser.classrooms.length != 0) {
+  if (currentUser.classrooms.length > 0) {
     displayClassrooms = currentUser.classrooms.map((classroom, id) => {
       return (
         <div key={id} className="max-w-sm rounded overflow-hidden shadow-lg">

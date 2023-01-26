@@ -43,13 +43,6 @@ function App() {
     });
   }
 
-  function removeClassroom(removedClassroom) {
-    const updateClassrooms = classrooms.filter(
-      (classroom) => classroom.id !== removedClassroom.id
-    );
-    setClassrooms(updateClassrooms);
-  }
-
   if (!currentUser) {
     return (
       <Routes>
@@ -73,7 +66,6 @@ function App() {
               <TeacherCourses
                 classrooms={classrooms}
                 addClassroom={addClassroom}
-                removeClassroom={removeClassroom}
               />
             }
           />
