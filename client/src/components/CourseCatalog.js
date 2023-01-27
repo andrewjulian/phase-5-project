@@ -2,11 +2,7 @@ import React, { useContext, useState } from "react";
 import { UserContext } from "../context/userContext";
 
 const CourseCatalog = ({ classrooms }) => {
-  const [currentUser, setCurrentUser, userEnrollUpdate] =
-    useContext(UserContext);
-
-  //need to add function that adds course to student enrollments on front end
-  //then set that as current user so it can be displayed on front end
+  const [currentUser, userEnrollUpdate] = useContext(UserContext);
 
   const [errors, setErrors] = useState([]);
 
@@ -39,7 +35,12 @@ const CourseCatalog = ({ classrooms }) => {
     });
   }
 
-  const displayClassrooms = classrooms.map((classroom, id) => {
+  const unEnrolledClassrooms = classrooms.filter(
+    (classroom) =>
+      !currentUser.classrooms.find((room) => room.id === classroom.id)
+  );
+
+  const displayClassrooms = unEnrolledClassrooms.map((classroom, id) => {
     return (
       <div key={id} className="max-w-sm rounded overflow-hidden shadow-lg">
         <div className="px-6 py-4">

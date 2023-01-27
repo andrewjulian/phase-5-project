@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "../context/userContext";
-import ClassroomTile from "./ClassroomTile";
 
 const TeacherCourses = ({ addClassroom }) => {
   const [currentUser] = useContext(UserContext);
