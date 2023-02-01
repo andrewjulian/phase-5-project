@@ -6,6 +6,11 @@ class EnrollmentsController < ApplicationController
     render json: enrollment, status: :created
   end
 
+  def index
+    enrollments = Enrollment.all
+    render json: enrollments
+  end
+
   private
 
   def render_unprocessable_entity(invalid)
@@ -13,7 +18,7 @@ class EnrollmentsController < ApplicationController
   end
 
   def enrollment_params
-    params.permit(:id, :student_id, :classroom_id)
+    params.permit(:id, :classroom_id)
   end
 
 end

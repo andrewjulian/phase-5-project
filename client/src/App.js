@@ -84,7 +84,12 @@ function App() {
           <Route path="/mycourses" element={<StudentCourses />} />
           <Route
             path="/coursecatalog"
-            element={<CourseCatalog classrooms={classrooms} />}
+            element={
+              <CourseCatalog
+                classrooms={classrooms}
+                /* userEnrollUpdate={userEnrollUpdate} */
+              />
+            }
           />
           <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<Navigate to="/landingpage" replace />} />

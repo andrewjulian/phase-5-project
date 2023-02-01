@@ -2,11 +2,13 @@ import React, { useContext, useState } from "react";
 import { UserContext } from "../context/userContext";
 
 const CourseCatalog = ({ classrooms }) => {
-  const [currentUser, userEnrollUpdate] = useContext(UserContext);
+  const [currentUser, setCurrentUser] = useContext(UserContext);
 
   const [errors, setErrors] = useState([]);
 
   const { display_name, type } = currentUser;
+
+  console.log("currentUser", currentUser);
 
   function enroll(e) {
     console.log("enroll");
@@ -25,7 +27,12 @@ const CourseCatalog = ({ classrooms }) => {
     }).then((r) => {
       if (r.ok) {
         r.json().then((r) => {
-          userEnrollUpdate(r.classroom);
+          console.log("r", r);
+          console.log("r.classroom", r.classroom);
+          setCurrentUser({
+            ...currentUser,
+            classrooms: [...currentUser.classrooms, r],
+          });
         });
       } else {
         r.json().then((err) => setErrors(err.errors));
@@ -59,6 +66,17 @@ const CourseCatalog = ({ classrooms }) => {
       </div>
     );
   });
+
+  if (unEnrolledClassrooms.length === 0) {
+    return (
+      <div>
+        <p>Hello, {display_name}!</p>
+        <p>This is your course catalog page</p>
+        <p>No unenrolled courses!</p>
+        <br />
+      </div>
+    );
+  }
 
   return (
     <div>
