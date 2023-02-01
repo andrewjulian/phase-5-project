@@ -31,7 +31,7 @@ const CourseCatalog = ({ classrooms }) => {
           console.log("r.classroom", r.classroom);
           setCurrentUser({
             ...currentUser,
-            classrooms: [...currentUser.classrooms, r],
+            classrooms: [...currentUser.classrooms, r.classroom],
           });
         });
       } else {
