@@ -1,28 +1,31 @@
 import React, { useContext } from "react";
 import { UserContext } from "../context/userContext";
+import CourseCard from "./CourseCard";
 
 const StudentCourses = () => {
   const [currentUser] = useContext(UserContext);
 
   const { display_name, type } = currentUser;
 
+  function unEnroll(room_id) {
+    console.log("delete clicked");
+    console.log("room id", room_id);
+
+    fetch(`/enrollments/${room_id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((r) => r.json())
+      .then((data) => console.log(data));
+  }
+
   let displayClassrooms = null;
 
   if (currentUser.classrooms.length > 0) {
     displayClassrooms = currentUser.classrooms.map((classroom, id) => {
-      return (
-        <div key={id} className="max-w-sm rounded overflow-hidden shadow-lg">
-          <div className="px-6 py-4">
-            <div className="font-bold text-xl mb-2">{classroom.name}</div>
-            <p className="text-gray-700 text-base">{classroom.subject}</p>
-          </div>
-          <div className="px-6 pt-4 pb-2">
-            <button className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-              Visit
-            </button>
-          </div>
-        </div>
-      );
+      return <CourseCard classroom={classroom} key={id} unEnroll={unEnroll} />;
     });
   } else {
     displayClassrooms = "No Classes Yet";

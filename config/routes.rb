@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :enrollments
+  
+ 
+  
+  resources :enrollments, only: [:index, :create] 
   resources :classrooms
   resources :users
   # route to test your configuration
@@ -8,5 +11,9 @@ Rails.application.routes.draw do
   post "/signup", to: "users#create"
   get "/auth", to: "users#show"
   delete "/logout", to: "sessions#destroy"
+
+  delete "/enrollments/:room_id", to: "enrollments#remove"
+
+  
 
 end

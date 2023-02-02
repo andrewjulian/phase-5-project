@@ -11,6 +11,17 @@ class EnrollmentsController < ApplicationController
     render json: enrollments
   end
 
+  def remove
+    user = User.find_by(id: session[:user_id])
+    enrollment = user.enrollments.find_by(classroom_id: params[:room_id])
+    if enrollment
+      enrollment.destroy
+      render json: enrollment
+    else 
+      render json: { error: "Classroom not found" }, status: :not_found
+    end
+  end
+
   private
 
   def render_unprocessable_entity(invalid)

@@ -8,8 +8,6 @@ const CourseCatalog = ({ classrooms }) => {
 
   const { display_name, type } = currentUser;
 
-  console.log("currentUser", currentUser);
-
   function enroll(e) {
     console.log("enroll");
 
