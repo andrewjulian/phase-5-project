@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../context/userContext";
+import CourseCard from "./CourseCard";
 
 const CourseCatalog = ({ classrooms }) => {
   const [currentUser, setCurrentUser] = useContext(UserContext);
@@ -78,7 +79,7 @@ const CourseCatalog = ({ classrooms }) => {
       <p>This is your course catalog page</p>
       <p>As a {type} you can sign up for new courses!</p>
       <br />
-      <div className="grid grid-cols-4 gap-4">{displayClassrooms}</div>
+      <div className="grid grid-cols-4 gap-4 m-2">{displayClassrooms}</div>
     </div>
   );
 };

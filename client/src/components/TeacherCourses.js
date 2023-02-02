@@ -81,7 +81,7 @@ const TeacherCourses = ({ addClassroom }) => {
       <p>You are a {type}</p>
       <p>This is where the classes you teach can be found!</p>
       <br />
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-4 gap-4 m-2">
         <div className="max-w-sm rounded overflow-hidden shadow-lg">
           <h1>Create new Course</h1>
           <form onSubmit={handleSubmit}>

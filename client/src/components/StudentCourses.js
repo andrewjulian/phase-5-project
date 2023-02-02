@@ -48,7 +48,7 @@ const StudentCourses = () => {
       <p>Hello, {display_name}</p>
       <p>These are your courses!</p>
       <p>You are a {type}</p>
-      <div className="grid grid-cols-4 gap-4">{displayClassrooms}</div>
+      <div className="grid grid-cols-4 gap-4 m-2">{displayClassrooms}</div>
     </div>
   );
 };
