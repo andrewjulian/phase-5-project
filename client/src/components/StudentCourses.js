@@ -7,19 +7,12 @@ const StudentCourses = () => {
 
   const { display_name, type } = currentUser;
 
-  console.log("current user courses", currentUser.classrooms);
-
   function updateEnrollments(unenrolled) {
-    console.log("update enrollments", unenrolled);
     const currentEnrollments = currentUser.classrooms.filter((classroom) => {
       return classroom.id !== unenrolled.classroom.id;
     });
 
-    console.log("currentEnrollments", currentEnrollments);
-
     setCurrentUser({ ...currentUser, classrooms: currentEnrollments });
-
-    console.log("currentuser", currentUser.classrooms);
   }
 
   function unEnroll(room_id) {
@@ -37,7 +30,14 @@ const StudentCourses = () => {
 
   if (currentUser.classrooms.length > 0) {
     displayClassrooms = currentUser.classrooms.map((classroom, id) => {
-      return <CourseCard classroom={classroom} key={id} unEnroll={unEnroll} />;
+      return (
+        <CourseCard
+          currentUser={currentUser}
+          classroom={classroom}
+          key={id}
+          unEnroll={unEnroll}
+        />
+      );
     });
   } else {
     displayClassrooms = "No Classes Yet";

@@ -13,6 +13,17 @@ class ClassroomsController < ApplicationController
     render json: newClassroom, status: :created
   end
 
+  def remove
+    user = User.find_by(id: session[:user_id])
+    classroom = user.classrooms.find(params[:deletedClassId])
+    if classroom
+      classroom.destroy
+      render json: classroom
+    else 
+      render json: { error: "Classroom not found" }, status: :not_found
+    end
+  end
+
   private
 
   def render_unprocessable_entity(invalid)

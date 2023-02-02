@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "../context/userContext";
+import CourseCard from "./CourseCard";
 
 const TeacherCourses = ({ addClassroom }) => {
   const [currentUser] = useContext(UserContext);
@@ -41,23 +42,26 @@ const TeacherCourses = ({ addClassroom }) => {
     setSubject("");
   }
 
+  function handleDeleteClass(deletedClassId) {
+    fetch(`/classrooms/${deletedClassId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((r) => r.json())
+      .then((data) => console.log(data));
+  }
+
   if (currentUser.classrooms.length > 0) {
     displayClassrooms = currentUser.classrooms.map((classroom, id) => {
       return (
-        <div key={id} className="max-w-sm rounded overflow-hidden shadow-lg">
-          <div className="px-6 py-4">
-            <div className="font-bold text-xl mb-2">{classroom.name}</div>
-            <p className="text-gray-700 text-base">{classroom.subject}</p>
-          </div>
-          <div className="px-6 pt-4 pb-2">
-            <button className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-              Visit
-            </button>
-            <button className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm    font-semibold text-gray-700 mr-2 mb-2">
-              Delete
-            </button>
-          </div>
-        </div>
+        <CourseCard
+          classroom={classroom}
+          handleDeleteClass={handleDeleteClass}
+          currentUser={currentUser}
+          key={id}
+        />
       );
     });
   } else {
