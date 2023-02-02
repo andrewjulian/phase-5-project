@@ -3,14 +3,26 @@ import { UserContext } from "../context/userContext";
 import CourseCard from "./CourseCard";
 
 const StudentCourses = () => {
-  const [currentUser] = useContext(UserContext);
+  const [currentUser, setCurrentUser] = useContext(UserContext);
 
   const { display_name, type } = currentUser;
 
-  function unEnroll(room_id) {
-    console.log("delete clicked");
-    console.log("room id", room_id);
+  console.log("current user courses", currentUser.classrooms);
 
+  function updateEnrollments(unenrolled) {
+    console.log("update enrollments", unenrolled);
+    const currentEnrollments = currentUser.classrooms.filter((classroom) => {
+      return classroom.id !== unenrolled.classroom.id;
+    });
+
+    console.log("currentEnrollments", currentEnrollments);
+
+    setCurrentUser({ ...currentUser, classrooms: currentEnrollments });
+
+    console.log("currentuser", currentUser.classrooms);
+  }
+
+  function unEnroll(room_id) {
     fetch(`/enrollments/${room_id}`, {
       method: "DELETE",
       headers: {
@@ -18,7 +30,7 @@ const StudentCourses = () => {
       },
     })
       .then((r) => r.json())
-      .then((data) => console.log(data));
+      .then((data) => updateEnrollments(data));
   }
 
   let displayClassrooms = null;

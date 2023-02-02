@@ -9,8 +9,6 @@ const CourseCatalog = ({ classrooms }) => {
   const { display_name, type } = currentUser;
 
   function enroll(e) {
-    console.log("enroll");
-
     e.preventDefault();
 
     fetch("/enrollments", {
@@ -25,8 +23,6 @@ const CourseCatalog = ({ classrooms }) => {
     }).then((r) => {
       if (r.ok) {
         r.json().then((r) => {
-          console.log("r", r);
-          console.log("r.classroom", r.classroom);
           setCurrentUser({
             ...currentUser,
             classrooms: [...currentUser.classrooms, r.classroom],
