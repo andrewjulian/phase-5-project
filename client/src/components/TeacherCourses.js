@@ -82,10 +82,10 @@ const TeacherCourses = ({ addClassroom }) => {
       <p>This is where the classes you teach can be found!</p>
       <br />
       <div className="grid grid-cols-4 gap-4 m-2">
-        <div className="max-w-sm rounded overflow-hidden shadow-lg">
-          <h1>Create new Course</h1>
+        <div className="max-w-sm rounded overflow-hidden shadow-lg p-2">
+          <h1 className="font-bold text-xl mb-2">Create New Course</h1>
           <form onSubmit={handleSubmit}>
-            <label>Class Title</label>
+            <label className="font-bold">Class Title: </label>
             <input
               type="text"
               value={name}
@@ -94,13 +94,13 @@ const TeacherCourses = ({ addClassroom }) => {
               required
             ></input>
             <br />
-            <label>Course</label>
+            <label className="font-bold">Subject: </label>
             <select
               onChange={(e) => setSubject(e.target.value)}
               defaultValue=""
             >
               <option value="" disabled>
-                Choose a Class...
+                Choose a Subject...
               </option>
               <option value="Math">Math</option>
               <option value="Science">Science</option>
@@ -109,7 +109,12 @@ const TeacherCourses = ({ addClassroom }) => {
               <option value="Foreign Language">Foreign Language</option>
             </select>
             <br />
-            <button type="submit">Create!</button>
+            <button
+              type="submit"
+              className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mt-2 mb-2 mr-2"
+            >
+              Create!
+            </button>
           </form>
         </div>
         {displayClassrooms}
