@@ -37,7 +37,6 @@ const TeacherCourses = ({ addClassroom }) => {
       if (r.ok) {
         r.json().then((r) => {
           addClassroom(r);
-          console.log(r);
         });
       } else {
         r.json().then((err) => setErrors(err.errors));
