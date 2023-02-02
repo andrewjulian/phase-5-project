@@ -3,7 +3,7 @@ import { UserContext } from "../context/userContext";
 import CourseCard from "./CourseCard";
 
 const TeacherCourses = ({ addClassroom }) => {
-  const [currentUser] = useContext(UserContext);
+  const [currentUser, setCurrentUser] = useContext(UserContext);
 
   const { display_name, type } = currentUser;
 
@@ -12,6 +12,14 @@ const TeacherCourses = ({ addClassroom }) => {
   const [errors, setErrors] = useState([]);
 
   let displayClassrooms = null;
+
+  function updateClassrooms(deletedClass) {
+    const currentEnrollments = currentUser.classrooms.filter((classroom) => {
+      return classroom.id !== deletedClass.id;
+    });
+
+    setCurrentUser({ ...currentUser, classrooms: currentEnrollments });
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -50,7 +58,7 @@ const TeacherCourses = ({ addClassroom }) => {
       },
     })
       .then((r) => r.json())
-      .then((data) => console.log(data));
+      .then((data) => updateClassrooms(data));
   }
 
   if (currentUser.classrooms.length > 0) {
