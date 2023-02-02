@@ -111,7 +111,7 @@ const TeacherCourses = ({ addClassroom }) => {
             <br />
             <button
               type="submit"
-              className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mt-2 mb-2 mr-2"
+              className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mt-2 mb-2 mr-2 hover:text-white hover:bg-blue-500"
             >
               Create!
             </button>
