@@ -5,7 +5,7 @@ import { NavLink as Link, redirect } from "react-router-dom";
 import { UserContext } from "../context/userContext";
 
 const SNavbar = () => {
-  const [setCurrentUser] = useContext(UserContext);
+  const [currentUser, setCurrentUser] = useContext(UserContext);
 
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
