@@ -82,7 +82,7 @@ const TeacherCourses = ({ addClassroom }) => {
       </h1>
       <br />
       <div className="grid grid-cols-4 gap-4 m-2">
-        <div className="max-w-sm rounded overflow-hidden shadow-lg p-2">
+        <div className="max-w-sm border-2 border-blue-500 rounded overflow-hidden shadow-lg p-2">
           <h1 className="font-bold text-xl mb-2">Create New Course</h1>
           <form onSubmit={handleSubmit}>
             <label className="font-bold">Class Title: </label>

@@ -48,6 +48,7 @@ const StudentCourses = () => {
       <h1 className=" text-center text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
         Current Courses
       </h1>
+      <br />
       <div className="grid grid-cols-4 gap-4 m-2">{displayClassrooms}</div>
     </div>
   );

@@ -43,7 +43,10 @@ const CourseCatalog = ({ classrooms }) => {
 
   const displayClassrooms = unEnrolledClassrooms.map((classroom, id) => {
     return (
-      <div key={id} className="max-w-sm rounded overflow-hidden shadow-lg">
+      <div
+        key={id}
+        className="max-w-sm rounded border-2 overflow-hidden shadow-lg"
+      >
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">{classroom.name}</div>
           <p className="text-gray-700 text-base">{classroom.subject}</p>
@@ -67,6 +70,7 @@ const CourseCatalog = ({ classrooms }) => {
         <h1 className=" text-center text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
           Course Catalog
         </h1>
+        <br />
         <p>No unenrolled courses!</p>
         <br />
       </div>

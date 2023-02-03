@@ -8,7 +8,7 @@ const CourseCard = ({
 }) => {
   if (currentUser.type === "Student") {
     return (
-      <div className="max-w-sm rounded overflow-hidden shadow-lg">
+      <div className="max-w-sm rounded border-2 overflow-hidden shadow-lg">
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">{classroom.name}</div>
           <p className="text-gray-700 text-base">{classroom.subject}</p>
@@ -30,7 +30,7 @@ const CourseCard = ({
 
   if (currentUser.type === "Teacher") {
     return (
-      <div className="max-w-sm rounded overflow-hidden shadow-lg">
+      <div className="max-w-sm rounded border-2 overflow-hidden shadow-lg">
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">{classroom.name}</div>
           <p className="text-gray-700 text-base">{classroom.subject}</p>
