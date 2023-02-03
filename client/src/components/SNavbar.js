@@ -5,7 +5,7 @@ import { NavLink as Link, redirect } from "react-router-dom";
 import { UserContext } from "../context/userContext";
 
 const SNavbar = () => {
-  const [currentUser, setCurrentUser] = useContext(UserContext);
+  const [setCurrentUser] = useContext(UserContext);
 
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
@@ -32,7 +32,7 @@ const SNavbar = () => {
         <div className="w-full justify-end" id="navbar-default">
           <div className="flex justify-end gap-x-2">
             <Link className="mr-6" to="/mycourses">
-              <p className="text-blue-500 hover:text-blue-800">Courses</p>
+              <p className="text-blue-500 hover:text-blue-800">My Courses</p>
             </Link>
             <Link className="mr-6" to="/coursecatalog">
               <p className="text-blue-500 hover:text-blue-800">

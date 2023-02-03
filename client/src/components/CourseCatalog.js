@@ -6,8 +6,6 @@ const CourseCatalog = ({ classrooms }) => {
 
   const [errors, setErrors] = useState([]);
 
-  const { display_name, type } = currentUser;
-
   function enroll(e) {
     e.preventDefault();
 

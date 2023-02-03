@@ -5,8 +5,6 @@ import CourseCard from "./CourseCard";
 const TeacherCourses = ({ addClassroom }) => {
   const [currentUser, setCurrentUser] = useContext(UserContext);
 
-  const { display_name, type } = currentUser;
-
   const [name, setName] = useState("");
   const [subject, setSubject] = useState("");
   const [errors, setErrors] = useState([]);

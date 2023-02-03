@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import Landingpage from "./components/Landingpage";
 import SNavbar from "./components/SNavbar";
 import TNavbar from "./components/TNavbar";
 import StudentCourses from "./components/StudentCourses";
@@ -58,7 +57,6 @@ function App() {
       <div className="App">
         <TNavbar />
         <Routes>
-          <Route path="/landingpage" element={<Landingpage />} />
           <Route path="/profile" element={<Profile />} />
           <Route
             path="/mycourses"
@@ -69,7 +67,7 @@ function App() {
               />
             }
           />
-          <Route path="*" element={<Navigate to="/landingpage" replace />} />
+          <Route path="*" element={<Navigate to="/profile" replace />} />
         </Routes>
       </div>
     );
@@ -80,7 +78,6 @@ function App() {
       <div className="App">
         <SNavbar />
         <Routes>
-          <Route path="/landingpage" element={<Landingpage />} />
           <Route path="/mycourses" element={<StudentCourses />} />
           <Route
             path="/coursecatalog"
@@ -92,7 +89,7 @@ function App() {
             }
           />
           <Route path="/profile" element={<Profile />} />
-          <Route path="*" element={<Navigate to="/landingpage" replace />} />
+          <Route path="*" element={<Navigate to="/profile" replace />} />
         </Routes>
       </div>
     );
