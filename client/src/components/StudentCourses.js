@@ -45,9 +45,9 @@ const StudentCourses = () => {
 
   return (
     <div>
-      <p>Hello, {display_name}</p>
-      <p>These are your courses!</p>
-      <p>You are a {type}</p>
+      <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+        Current Courses
+      </h1>
       <div className="grid grid-cols-4 gap-4 m-2">{displayClassrooms}</div>
     </div>
   );

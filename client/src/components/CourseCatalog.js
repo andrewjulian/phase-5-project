@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../context/userContext";
-import CourseCard from "./CourseCard";
 
 const CourseCatalog = ({ classrooms }) => {
   const [currentUser, setCurrentUser] = useContext(UserContext);
@@ -65,8 +64,9 @@ const CourseCatalog = ({ classrooms }) => {
   if (unEnrolledClassrooms.length === 0) {
     return (
       <div>
-        <p>Hello, {display_name}!</p>
-        <p>This is your course catalog page</p>
+        <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+          Course Catalog
+        </h1>
         <p>No unenrolled courses!</p>
         <br />
       </div>
@@ -75,9 +75,9 @@ const CourseCatalog = ({ classrooms }) => {
 
   return (
     <div>
-      <p>Hello, {display_name}!</p>
-      <p>This is your course catalog page</p>
-      <p>As a {type} you can sign up for new courses!</p>
+      <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+        Course Catalog
+      </h1>
       <br />
       <div className="grid grid-cols-4 gap-4 m-2">{displayClassrooms}</div>
     </div>

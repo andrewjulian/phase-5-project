@@ -77,9 +77,9 @@ const TeacherCourses = ({ addClassroom }) => {
 
   return (
     <div>
-      <p>Hello, {display_name}!</p>
-      <p>You are a {type}</p>
-      <p>This is where the classes you teach can be found!</p>
+      <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+        Current Courses
+      </h1>
       <br />
       <div className="grid grid-cols-4 gap-4 m-2">
         <div className="max-w-sm rounded overflow-hidden shadow-lg p-2">
