@@ -14,6 +14,7 @@ const Profile = () => {
           <img
             className="object-cover w-full h-full"
             src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=80"
+            alt="profile"
           />
         </div>
         <div className="mt-16">
