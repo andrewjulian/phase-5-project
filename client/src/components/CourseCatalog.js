@@ -64,7 +64,7 @@ const CourseCatalog = ({ classrooms }) => {
   if (unEnrolledClassrooms.length === 0) {
     return (
       <div>
-        <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+        <h1 className=" text-center text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
           Course Catalog
         </h1>
         <p>No unenrolled courses!</p>
@@ -75,7 +75,7 @@ const CourseCatalog = ({ classrooms }) => {
 
   return (
     <div>
-      <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+      <h1 className=" text-center text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
         Course Catalog
       </h1>
       <br />
