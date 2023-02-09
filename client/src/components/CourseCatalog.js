@@ -2,42 +2,12 @@ import React, { useContext, useState } from "react";
 import { UserContext } from "../context/userContext";
 
 const CourseCatalog = ({ classrooms }) => {
-  const [currentUser, setCurrentUser] = useContext(UserContext);
-
-  const [errors, setErrors] = useState([]);
-
-  function enroll(e) {
-    e.preventDefault();
-
-    fetch("/enrollments", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        user_id: currentUser.id,
-        classroom_id: e.target.value,
-      }),
-    }).then((r) => {
-      if (r.ok) {
-        r.json().then((r) => {
-          setCurrentUser({
-            ...currentUser,
-            classrooms: [...currentUser.classrooms, r.classroom],
-          });
-        });
-      } else {
-        r.json().then((err) => setErrors(err.errors));
-        console.log("booooo");
-        console.log(errors);
-      }
-    });
-  }
+  const [currentUser, setCurrentUser, enroll] = useContext(UserContext);
 
   let displayClassrooms = null;
   let unEnrolledClassrooms = null;
 
-  if (currentUser.classrooms != undefined) {
+  if (currentUser.classrooms !== undefined) {
     unEnrolledClassrooms = classrooms.filter(
       (classroom) =>
         !currentUser.classrooms.find((room) => room.id === classroom.id)

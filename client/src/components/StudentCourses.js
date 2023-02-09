@@ -5,6 +5,8 @@ import CourseCard from "./CourseCard";
 const StudentCourses = () => {
   const [currentUser, setCurrentUser] = useContext(UserContext);
 
+  console.log("currentUser", currentUser);
+
   function updateEnrollments(unenrolled) {
     const currentEnrollments = currentUser.classrooms.filter((classroom) => {
       return classroom.id !== unenrolled.classroom.id;
@@ -26,7 +28,7 @@ const StudentCourses = () => {
 
   let displayClassrooms = null;
 
-  if (currentUser.classrooms != undefined) {
+  if (currentUser.classrooms !== undefined) {
     if (currentUser.classrooms.length > 0) {
       displayClassrooms = currentUser.classrooms.map((classroom, id) => {
         return (

@@ -23,7 +23,9 @@ function App() {
         res.json().then((user) => setCurrentUser(user));
       }
     });
+  }, [setCurrentUser]);
 
+  useEffect(() => {
     fetch("/classrooms").then((res) => {
       if (res.ok) {
         res.json().then((r) => {
