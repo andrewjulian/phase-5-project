@@ -26,19 +26,21 @@ const StudentCourses = () => {
 
   let displayClassrooms = null;
 
-  if (currentUser.classrooms.length > 0) {
-    displayClassrooms = currentUser.classrooms.map((classroom, id) => {
-      return (
-        <CourseCard
-          currentUser={currentUser}
-          classroom={classroom}
-          key={id}
-          unEnroll={unEnroll}
-        />
-      );
-    });
-  } else {
-    displayClassrooms = "No Classes Yet";
+  if (currentUser.classrooms != undefined) {
+    if (currentUser.classrooms.length > 0) {
+      displayClassrooms = currentUser.classrooms.map((classroom, id) => {
+        return (
+          <CourseCard
+            currentUser={currentUser}
+            classroom={classroom}
+            key={id}
+            unEnroll={unEnroll}
+          />
+        );
+      });
+    } else {
+      displayClassrooms = "No Classes Yet";
+    }
   }
 
   return (

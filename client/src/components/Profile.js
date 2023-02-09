@@ -9,8 +9,6 @@ const Profile = () => {
 
   const { display_name, type } = currentUser;
 
-  console.log(updateProfile);
-
   if (updateProfile === true) {
     return (
       <div>
