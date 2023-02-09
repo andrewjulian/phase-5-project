@@ -17,17 +17,26 @@ function UserProvider({ children }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        user_id: currentUser.id,
+        //user_id: currentUser.id,
         classroom_id: e.target.value,
       }),
     }).then((r) => {
       if (r.ok) {
-        r.json().then((r) => {
-          setCurrentUser({
-            ...currentUser,
-            classrooms: [...currentUser.classrooms, r.classroom],
+        if (currentUser.classrooms !== undefined) {
+          r.json().then((r) => {
+            setCurrentUser({
+              ...currentUser,
+              classrooms: [...currentUser.classrooms, r.classroom],
+            });
           });
-        });
+        } else {
+          r.json().then((r) => {
+            setCurrentUser({
+              ...currentUser,
+              classrooms: [r.classroom],
+            });
+          });
+        }
       } else {
         r.json().then((err) => setErrors(err.errors));
         console.log("booooo");

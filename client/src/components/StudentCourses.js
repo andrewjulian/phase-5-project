@@ -5,8 +5,6 @@ import CourseCard from "./CourseCard";
 const StudentCourses = () => {
   const [currentUser, setCurrentUser] = useContext(UserContext);
 
-  console.log("currentUser", currentUser.classrooms);
-
   function updateEnrollments(unenrolled) {
     const currentEnrollments = currentUser.classrooms.filter((classroom) => {
       return classroom.id !== unenrolled.classroom.id;
