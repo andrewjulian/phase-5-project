@@ -33,7 +33,7 @@ function App() {
         });
       }
     });
-  }, [setCurrentUser]);
+  }, [currentUser]);
 
   function addClassroom(newClassroom) {
     setClassrooms([...classrooms, newClassroom]);

@@ -5,7 +5,7 @@ import CourseCard from "./CourseCard";
 const StudentCourses = () => {
   const [currentUser, setCurrentUser] = useContext(UserContext);
 
-  console.log("currentUser", currentUser);
+  console.log("currentUser", currentUser.classrooms);
 
   function updateEnrollments(unenrolled) {
     const currentEnrollments = currentUser.classrooms.filter((classroom) => {
@@ -40,9 +40,9 @@ const StudentCourses = () => {
           />
         );
       });
-    } else {
-      displayClassrooms = "No Classes Yet";
     }
+  } else {
+    displayClassrooms = "No Classes Yet";
   }
 
   return (
