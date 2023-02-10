@@ -31,7 +31,7 @@ class ClassroomsController < ApplicationController
   end
 
   def classroom_params
-    params.permit(:id, :name, :subject, :teacher_id)
+    params.permit(:id, :name, :subject)
   end
 
 end

@@ -12,7 +12,8 @@ import TeacherCourses from "./components/TeacherCourses";
 import { UserContext } from "./context/userContext";
 
 function App() {
-  const [currentUser, setCurrentUser, setClassrooms] = useContext(UserContext);
+  const [currentUser, setCurrentUser, classrooms, setClassrooms] =
+    useContext(UserContext);
 
   useEffect(() => {
     fetch("/auth").then((res) => {
@@ -20,7 +21,7 @@ function App() {
         res.json().then((user) => setCurrentUser(user));
       }
     });
-  }, [setCurrentUser, setClassrooms]);
+  }, [setCurrentUser]);
 
   useEffect(() => {
     fetch("/classrooms").then((res) => {
@@ -30,7 +31,7 @@ function App() {
         });
       }
     });
-  }, [currentUser, setClassrooms]);
+  }, [setClassrooms]);
 
   if (!currentUser) {
     return (
