@@ -2,14 +2,24 @@ import React, { useState, useContext } from "react";
 import { UserContext } from "../context/userContext";
 import CourseCard from "./CourseCard";
 
-const TeacherCourses = ({ addClassroom }) => {
-  const [currentUser, setCurrentUser] = useContext(UserContext);
+const TeacherCourses = () => {
+  const [currentUser, setCurrentUser, classrooms, setClassrooms] =
+    useContext(UserContext);
 
   const [name, setName] = useState("");
   const [subject, setSubject] = useState("");
   const [errors, setErrors] = useState([]);
 
   let displayClassrooms = null;
+
+  function addClassroom(newClassroom) {
+    setClassrooms([...classrooms, newClassroom]);
+
+    setCurrentUser({
+      ...currentUser,
+      classrooms: [...currentUser.classrooms, newClassroom],
+    });
+  }
 
   function updateClassrooms(deletedClass) {
     const currentEnrollments = currentUser.classrooms.filter((classroom) => {

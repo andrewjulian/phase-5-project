@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
@@ -11,11 +11,9 @@ import TeacherCourses from "./components/TeacherCourses";
 
 import { UserContext } from "./context/userContext";
 
-/* new */
-
 function App() {
-  const [currentUser, setCurrentUser] = useContext(UserContext);
-  const [classrooms, setClassrooms] = useState([]);
+  const [currentUser, setCurrentUser, classrooms, setClassrooms] =
+    useContext(UserContext);
 
   useEffect(() => {
     fetch("/auth").then((res) => {
@@ -35,15 +33,6 @@ function App() {
     });
   }, [currentUser]);
 
-  function addClassroom(newClassroom) {
-    setClassrooms([...classrooms, newClassroom]);
-
-    setCurrentUser({
-      ...currentUser,
-      classrooms: [...currentUser.classrooms, newClassroom],
-    });
-  }
-
   if (!currentUser) {
     return (
       <Routes>
@@ -60,15 +49,7 @@ function App() {
         <TNavbar />
         <Routes>
           <Route path="/profile" element={<Profile />} />
-          <Route
-            path="/mycourses"
-            element={
-              <TeacherCourses
-                classrooms={classrooms}
-                addClassroom={addClassroom}
-              />
-            }
-          />
+          <Route path="/mycourses" element={<TeacherCourses />} />
           <Route path="*" element={<Navigate to="/mycourses" replace />} />
         </Routes>
       </div>
@@ -81,15 +62,7 @@ function App() {
         <SNavbar />
         <Routes>
           <Route path="/mycourses" element={<StudentCourses />} />
-          <Route
-            path="/coursecatalog"
-            element={
-              <CourseCatalog
-                classrooms={classrooms}
-                /* userEnrollUpdate={userEnrollUpdate} */
-              />
-            }
-          />
+          <Route path="/coursecatalog" element={<CourseCatalog />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<Navigate to="/mycourses" replace />} />
         </Routes>
