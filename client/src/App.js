@@ -31,7 +31,7 @@ function App() {
         });
       }
     });
-  }, [setClassrooms]);
+  }, [setClassrooms, currentUser]);
 
   if (!currentUser) {
     return (

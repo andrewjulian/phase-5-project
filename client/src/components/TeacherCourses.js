@@ -48,6 +48,7 @@ const TeacherCourses = () => {
         });
       } else {
         r.json().then((err) => setErrors(err.errors));
+        console.log(errors);
       }
     });
 

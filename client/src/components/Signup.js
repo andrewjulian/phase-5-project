@@ -32,6 +32,7 @@ const Signup = () => {
       if (res.ok) {
         res.json().then(setCurrentUser(newUser));
       } else {
+        res.json().then((err) => setErrors(err.errors));
         console.log(errors);
       }
     });

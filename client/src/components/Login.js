@@ -29,7 +29,8 @@ const Login = () => {
           setCurrentUser(user);
         });
       } else {
-        setErrors(errors);
+        r.json().then((err) => setErrors(err.errors));
+        console.log(errors);
       }
     });
 
