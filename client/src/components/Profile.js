@@ -38,9 +38,16 @@ const Profile = () => {
             <br />
             <button
               onClick={() => setUpdateProfile(!updateProfile)}
-              className=" bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700"
+              className=" bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 hover:bg-blue-500 hover:text-white"
             >
-              Update Photo
+              Upload
+            </button>
+            <br />
+            <button
+              onClick={() => setUpdateProfile(!updateProfile)}
+              className=" bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 hover:bg-blue-500 hover:text-white"
+            >
+              Back to Profile
             </button>
           </div>
         </div>
@@ -67,7 +74,7 @@ const Profile = () => {
         <div className="flex flex-col items-center">
           <button
             onClick={() => setUpdateProfile(!updateProfile)}
-            className=" bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700"
+            className=" bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 hover:bg-blue-500 hover:text-white"
           >
             Update Photo
           </button>
