@@ -13,7 +13,6 @@ const Login = () => {
 
   function handleLoginSubmit(e) {
     e.preventDefault();
-
     fetch("/login", {
       method: "POST",
       headers: {
@@ -33,7 +32,6 @@ const Login = () => {
         console.log(errors);
       }
     });
-
     setEmail("");
     setPassword("");
   }

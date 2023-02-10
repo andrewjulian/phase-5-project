@@ -14,7 +14,6 @@ const TeacherCourses = () => {
 
   function addClassroom(newClassroom) {
     setClassrooms([...classrooms, newClassroom]);
-
     setCurrentUser({
       ...currentUser,
       classrooms: [...currentUser.classrooms, newClassroom],
@@ -25,13 +24,11 @@ const TeacherCourses = () => {
     const currentEnrollments = currentUser.classrooms.filter((classroom) => {
       return classroom.id !== deletedClass.id;
     });
-
     setCurrentUser({ ...currentUser, classrooms: currentEnrollments });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-
     fetch("/classrooms", {
       method: "POST",
       headers: {
@@ -51,7 +48,6 @@ const TeacherCourses = () => {
         console.log(errors);
       }
     });
-
     setName("");
     setSubject("");
   }

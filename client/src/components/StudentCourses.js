@@ -9,7 +9,6 @@ const StudentCourses = () => {
     const currentEnrollments = currentUser.classrooms.filter((classroom) => {
       return classroom.id !== unenrolled.classroom.id;
     });
-
     setCurrentUser({ ...currentUser, classrooms: currentEnrollments });
   }
 
