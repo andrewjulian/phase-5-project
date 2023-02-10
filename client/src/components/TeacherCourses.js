@@ -72,7 +72,6 @@ const TeacherCourses = () => {
         <CourseCard
           classroom={classroom}
           handleDeleteClass={handleDeleteClass}
-          currentUser={currentUser}
           key={id}
         />
       );

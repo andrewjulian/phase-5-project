@@ -1,11 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../context/userContext";
 
-const CourseCard = ({
-  currentUser,
-  unEnroll,
-  classroom,
-  handleDeleteClass,
-}) => {
+const CourseCard = ({ unEnroll, classroom, handleDeleteClass }) => {
+  const [currentUser] = useContext(UserContext);
+
   if (currentUser.type === "Student") {
     return (
       <div className="max-w-sm rounded border-2 overflow-hidden shadow-lg">

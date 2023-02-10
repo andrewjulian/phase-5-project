@@ -11,14 +11,6 @@ const Login = () => {
 
   const [currentUser, setCurrentUser] = useContext(UserContext);
 
-  function handleEmailChange(event) {
-    setEmail(event.target.value);
-  }
-
-  function handlePasswordChange(event) {
-    setPassword(event.target.value);
-  }
-
   function handleLoginSubmit(e) {
     e.preventDefault();
 
@@ -78,7 +70,7 @@ const Login = () => {
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="name@company.com"
                   value={email}
-                  onChange={handleEmailChange}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                 />
               </div>
@@ -95,7 +87,7 @@ const Login = () => {
                   placeholder="Enter Password"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   value={password}
-                  onChange={handlePasswordChange}
+                  onChange={(e) => setPassword(e.target.value)}
                   required
                 />
               </div>

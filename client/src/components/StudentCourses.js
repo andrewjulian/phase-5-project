@@ -30,12 +30,7 @@ const StudentCourses = () => {
     if (currentUser.classrooms.length > 0) {
       displayClassrooms = currentUser.classrooms.map((classroom, id) => {
         return (
-          <CourseCard
-            currentUser={currentUser}
-            classroom={classroom}
-            key={id}
-            unEnroll={unEnroll}
-          />
+          <CourseCard classroom={classroom} key={id} unEnroll={unEnroll} />
         );
       });
     }
