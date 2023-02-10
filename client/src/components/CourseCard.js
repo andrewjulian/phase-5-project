@@ -12,12 +12,12 @@ const CourseCard = ({ unEnroll, classroom, handleDeleteClass }) => {
           <p className="text-gray-700 text-base">{classroom.subject}</p>
         </div>
         <div className="px-6 pt-4 pb-2">
-          <button className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+          <button className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 hover:bg-blue-500 hover:text-white">
             Chatroom
           </button>
           <button
             onClick={() => unEnroll(classroom.id)}
-            className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+            className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 hover:bg-blue-500 hover:text-white"
           >
             Unenroll
           </button>
@@ -34,12 +34,12 @@ const CourseCard = ({ unEnroll, classroom, handleDeleteClass }) => {
           <p className="text-gray-700 text-base">{classroom.subject}</p>
         </div>
         <div className="px-6 pt-4 pb-2">
-          <button className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+          <button className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 hover:bg-blue-500 hover:text-white">
             Chatroom
           </button>
           <button
             onClick={() => handleDeleteClass(classroom.id)}
-            className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm    font-semibold text-gray-700 mr-2 mb-2"
+            className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm    font-semibold text-gray-700 mr-2 mb-2 hover:bg-blue-500 hover:text-white"
           >
             Delete
           </button>
