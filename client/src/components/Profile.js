@@ -9,6 +9,10 @@ const Profile = () => {
 
   const { display_name, type } = currentUser;
 
+  function handleUploadAvatar(picture) {
+    console.log("picture", picture);
+  }
+
   if (updateProfile === true) {
     return (
       <div>
@@ -33,7 +37,7 @@ const Profile = () => {
               className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
               type="file"
               value={selectedFile}
-              onChange={(e) => setSelectedFile(e.target.files[0])}
+              onChange={(e) => handleUploadAvatar(e.target.files[0])}
             />
             <br />
             <button

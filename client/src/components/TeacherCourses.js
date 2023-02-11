@@ -10,8 +10,6 @@ const TeacherCourses = () => {
   const [subject, setSubject] = useState("");
   const [errors, setErrors] = useState([]);
 
-  let displayClassrooms = null;
-
   function addClassroom(newClassroom) {
     setClassrooms([...classrooms, newClassroom]);
     setCurrentUser({
@@ -63,18 +61,22 @@ const TeacherCourses = () => {
       .then((data) => updateClassrooms(data));
   }
 
-  if (currentUser.classrooms.length > 0) {
-    displayClassrooms = currentUser.classrooms.map((classroom, id) => {
-      return (
-        <CourseCard
-          classroom={classroom}
-          handleDeleteClass={handleDeleteClass}
-          key={id}
-        />
-      );
-    });
-  } else {
-    displayClassrooms = "No Classes Yet";
+  let displayClassrooms = null;
+
+  if (currentUser.classrooms !== undefined) {
+    if (currentUser.classrooms.length > 0) {
+      displayClassrooms = currentUser.classrooms.map((classroom, id) => {
+        return (
+          <CourseCard
+            classroom={classroom}
+            handleDeleteClass={handleDeleteClass}
+            key={id}
+          />
+        );
+      });
+    } else {
+      displayClassrooms = "No Classes Yet";
+    }
   }
 
   return (
