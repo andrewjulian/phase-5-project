@@ -4,13 +4,35 @@ import { UserContext } from "../context/userContext";
 const Profile = () => {
   const [currentUser, setCurrentUser] = useContext(UserContext);
 
-  const [selectedFile, setSelectedFile] = useState();
+  const [selectedFile, setSelectedFile] = useState("");
   const [updateProfile, setUpdateProfile] = useState(false);
 
   const { display_name, type } = currentUser;
 
+  function handleSubmit(e) {
+    console.log("handle submit");
+    e.preventDefault();
+
+    const data = new FormData();
+
+    data.append("post[avatar]", selectedFile);
+
+    handleUploadAvatar(data);
+  }
+
   function handleUploadAvatar(picture) {
-    console.log("picture", picture);
+    console.log("handle upload");
+    console.log();
+    fetch(`/users/${currentUser.id}`, {
+      method: "PATCH",
+      body: picture,
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        console.log(data.image_url); //update user
+      });
+
+    setUpdateProfile(!updateProfile);
   }
 
   if (updateProfile === true) {
@@ -33,26 +55,30 @@ const Profile = () => {
           </div>
           <br />
           <div className=" pl-2 pr-2 flex flex-col items-center">
-            <input
-              className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
-              type="file"
-              value={selectedFile}
-              onChange={(e) => handleUploadAvatar(e.target.files[0])}
-            />
-            <br />
-            <button
-              onClick={() => setUpdateProfile(!updateProfile)}
-              className=" bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 hover:bg-blue-500 hover:text-white"
-            >
-              Upload
-            </button>
-            <br />
-            <button
-              onClick={() => setUpdateProfile(!updateProfile)}
-              className=" bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 hover:bg-blue-500 hover:text-white"
-            >
-              Back to Profile
-            </button>
+            <form onSubmit={(e) => handleSubmit(e)}>
+              <label htmlFor="avatar">Upload Picture</label>
+              <input
+                className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                type="file"
+                name="avatar"
+                id="avatar"
+                onChange={(e) => setSelectedFile(e.target.files[0])}
+              />
+              <br />
+              <button
+                type="submit"
+                className=" bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 hover:bg-blue-500 hover:text-white"
+              >
+                Upload
+              </button>
+              <br />
+              <button
+                onClick={() => setUpdateProfile(!updateProfile)}
+                className=" bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 hover:bg-blue-500 hover:text-white"
+              >
+                Back to Profile
+              </button>
+            </form>
           </div>
         </div>
       </div>

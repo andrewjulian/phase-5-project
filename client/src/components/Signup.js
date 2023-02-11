@@ -4,7 +4,7 @@ import "../index.css";
 import { UserContext } from "../context/userContext";
 
 const Signup = () => {
-  const [displayName, setDisplayName] = useState("");
+  const [display_name, setDisplay_Name] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [type, setType] = useState("");
@@ -15,15 +15,34 @@ const Signup = () => {
   function handleLoginSubmit(e) {
     e.preventDefault();
 
-    const newUser = {
+    const formData = new FormData();
+
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("display_name", display_name);
+    formData.append("type", type);
+
+    fetch("/signup", {
+      method: "POST",
+      body: formData,
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((newUser) => {
+          setCurrentUser(newUser);
+        });
+      } else {
+        res.json().then((err) => setErrors(err.errors));
+        console.log(errors);
+      }
+    });
+
+    /* const newUser = {
       email,
       password,
-      display_name: displayName,
+      display_name,
       type: type,
-    };
-
-    console.log("newUser", newUser);
-
+    }; 
+    
     fetch("/signup", {
       method: "POST",
       headers: { "Content-type": "application/json" },
@@ -35,10 +54,12 @@ const Signup = () => {
         res.json().then((err) => setErrors(err.errors));
         console.log(errors);
       }
-    });
+    });*/
 
     setEmail("");
     setPassword("");
+    setDisplay_Name("");
+    setType("");
   }
 
   return (
@@ -105,11 +126,11 @@ const Signup = () => {
                 </label>
                 <input
                   type="text"
-                  id="displayName"
+                  id="display_name"
                   placeholder="Create Display Name"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  value={displayName}
-                  onChange={(e) => setDisplayName(e.target.value)}
+                  value={display_name}
+                  onChange={(e) => setDisplay_Name(e.target.value)}
                   required
                 />
               </div>
