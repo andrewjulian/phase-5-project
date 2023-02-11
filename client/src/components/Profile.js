@@ -9,30 +9,8 @@ const Profile = () => {
 
   const { display_name, type } = currentUser;
 
-  function handleSubmit(e) {
-    console.log("handle submit");
-    e.preventDefault();
-
-    const data = new FormData();
-
-    data.append("post[avatar]", selectedFile);
-
-    handleUploadAvatar(data);
-  }
-
-  function handleUploadAvatar(picture) {
-    console.log("handle upload");
-    console.log();
-    fetch(`/users/${currentUser.id}`, {
-      method: "PATCH",
-      body: picture,
-    })
-      .then((r) => r.json())
-      .then((data) => {
-        console.log(data.image_url); //update user
-      });
-
-    setUpdateProfile(!updateProfile);
+  function handleSubmit() {
+    console.log("test");
   }
 
   if (updateProfile === true) {

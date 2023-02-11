@@ -20,12 +20,6 @@ class UsersController < ApplicationController
     render json: users
   end
 
-  def update
-    user = User.find_by(id: session[:user_id])
-    user.update!(update_user_params)
-    render json: user, status: :accepted
-  end
-
 
 
   private
