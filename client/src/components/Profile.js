@@ -2,14 +2,16 @@ import React, { useState, useContext } from "react";
 import { UserContext } from "../context/userContext";
 
 const Profile = () => {
-  const [currentUser, setCurrentUser] = useContext(UserContext);
+  const [currentUser, setCurrentUser, avatar, setAvatar] =
+    useContext(UserContext);
 
-  const [selectedFile, setSelectedFile] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
   const [updateProfile, setUpdateProfile] = useState(false);
 
   const { display_name, type } = currentUser;
 
-  function handleSubmit() {
+  function handleSubmit(e) {
+    e.preventDefault();
     console.log("test");
   }
 
@@ -21,8 +23,8 @@ const Profile = () => {
           <div className="relative shadow mx-auto h-24 w-24 -my-12  rounded-full overflow-hidden border-4">
             <img
               className="object-cover w-full h-full"
-              src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=80"
-              alt="profile"
+              src={currentUser?.image}
+              alt="user's avatar"
             />
           </div>
           <div className="mt-16">
@@ -70,8 +72,8 @@ const Profile = () => {
         <div className="relative shadow mx-auto h-24 w-24 -my-12  rounded-full overflow-hidden border-4">
           <img
             className="object-cover w-full h-full"
-            src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=80"
-            alt="profile"
+            src={currentUser?.image}
+            alt="user's avatar"
           />
         </div>
         <div className="mt-16">

@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
 
   skip_before_action :authorize, only: [:create]
@@ -16,10 +15,9 @@ class UsersController < ApplicationController
   end
 
   def index
-    users = User.all
+    users = User.all.with_attached_image
     render json: users
   end
-
 
 
   private
@@ -29,12 +27,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.permit(:id, :email, :password, :display_name, :type, :avatar)
+    params.permit(:id, :email, :password, :display_name, :type, :image)
   end
-
-  def update_user_params
-    params.permit(:avatar)
-  end
-
 
 end

@@ -8,9 +8,15 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [type, setType] = useState("");
+  const [selectedImage, setSelectedImage] = useState(null);
   const [errors, setErrors] = useState([]);
 
-  const [currentUser, setCurrentUser] = useContext(UserContext);
+  const [currentUser, setCurrentUser, avatar, setAvatar] =
+    useContext(UserContext);
+
+  function handleFileChange(e) {
+    setSelectedImage(e.target.files[0]);
+  }
 
   function handleLoginSubmit(e) {
     e.preventDefault();
@@ -21,6 +27,7 @@ const Signup = () => {
     formData.append("password", password);
     formData.append("display_name", display_name);
     formData.append("type", type);
+    formData.append("image", selectedImage);
 
     fetch("/signup", {
       method: "POST",
@@ -150,6 +157,17 @@ const Signup = () => {
                   <option value="Student">Student</option>
                   <option value="Teacher">Teacher</option>
                 </select>
+              </div>
+
+              <div>
+                <label htmlFor="avatar">Upload Picture</label>
+                <input
+                  className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                  type="file"
+                  name="avatar"
+                  id="avatar"
+                  onChange={handleFileChange}
+                />
               </div>
 
               <button

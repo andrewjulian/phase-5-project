@@ -36,7 +36,12 @@ gem "image_processing", "~> 1.2"
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem "rack-cors"
 
+gem "jsonapi-serializer", "~>2.2"
+gem "active_model_serializers", "~> 0.10.13"
+gem "dotenv-rails", "~>2.8"
 gem "byebug"
+
+gem "figaro"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -49,4 +54,3 @@ group :development do
 end
 
 
-gem "active_model_serializers", "~> 0.10.13"

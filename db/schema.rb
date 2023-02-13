@@ -64,7 +64,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_11_192032) do
     t.string "display_name"
     t.string "password_digest"
     t.string "type"
-    t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
