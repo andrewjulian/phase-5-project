@@ -11,8 +11,7 @@ const Signup = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [errors, setErrors] = useState([]);
 
-  const [currentUser, setCurrentUser, avatar, setAvatar] =
-    useContext(UserContext);
+  const [currentUser, setCurrentUser] = useContext(UserContext);
 
   function handleFileChange(e) {
     setSelectedImage(e.target.files[0]);
@@ -43,30 +42,11 @@ const Signup = () => {
       }
     });
 
-    /* const newUser = {
-      email,
-      password,
-      display_name,
-      type: type,
-    }; 
-    
-    fetch("/signup", {
-      method: "POST",
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify(newUser),
-    }).then((res) => {
-      if (res.ok) {
-        res.json().then(setCurrentUser(newUser));
-      } else {
-        res.json().then((err) => setErrors(err.errors));
-        console.log(errors);
-      }
-    });*/
-
     setEmail("");
     setPassword("");
     setDisplay_Name("");
     setType("");
+    setSelectedImage(null);
   }
 
   return (
