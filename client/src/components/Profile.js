@@ -17,7 +17,9 @@ const Profile = () => {
 
     const formData = new FormData();
 
-    formData.append("image", selectedFile);
+    if (selectedFile) {
+      formData.append("image", selectedFile);
+    }
 
     fetch(`/users/${userId}`, {
       method: "PATCH",
@@ -42,7 +44,12 @@ const Profile = () => {
           <div className="relative shadow mx-auto h-24 w-24 -my-12  rounded-full overflow-hidden border-4">
             <img
               className="object-cover w-full h-full"
-              src={currentUser?.image}
+              src={
+                currentUser.image
+                  ? currentUser.image
+                  : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+              }
+              /* src={currentUser?.image} */
               alt="user's avatar"
             />
           </div>
@@ -91,7 +98,11 @@ const Profile = () => {
         <div className="relative shadow mx-auto h-24 w-24 -my-12  rounded-full overflow-hidden border-4">
           <img
             className="object-cover w-full h-full"
-            src={currentUser?.image}
+            src={
+              currentUser.image
+                ? currentUser.image
+                : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+            }
             alt="user's avatar"
           />
         </div>
