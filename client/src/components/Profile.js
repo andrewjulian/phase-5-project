@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { UserContext } from "../context/userContext";
 
 const Profile = () => {
-  const [currentUser, setCurrentUser, avatar, setAvatar] =
+  const [currentUser, setCurrentUser, errors, setErrors] =
     useContext(UserContext);
 
   const [selectedFile, setSelectedFile] = useState(null);
@@ -12,7 +12,26 @@ const Profile = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("test");
+
+    const userId = currentUser.id;
+
+    const formData = new FormData();
+
+    formData.append("image", selectedFile);
+
+    fetch(`/users/${userId}`, {
+      method: "PATCH",
+      body: formData,
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((newUser) => {
+          setCurrentUser(newUser);
+        });
+      } else {
+        res.json().then((err) => setErrors(err.errors));
+        console.log(errors);
+      }
+    });
   }
 
   if (updateProfile === true) {
