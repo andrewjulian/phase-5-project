@@ -123,8 +123,11 @@ const Signup = () => {
               </div>
 
               <div>
-                <label htmlFor="type">
-                  <b>Role </b>
+                <label
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  htmlFor="type"
+                >
+                  Role
                 </label>
                 <select
                   type="text"
@@ -140,7 +143,7 @@ const Signup = () => {
               </div>
 
               <div>
-                <label htmlFor="avatar">Upload Picture</label>
+                <label htmlFor="avatar">Upload Picture (optional)</label>
                 <input
                   className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
                   type="file"
