@@ -49,7 +49,6 @@ const Profile = () => {
                   ? currentUser.image
                   : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
               }
-              /* src={currentUser?.image} */
               alt="user's avatar"
             />
           </div>
@@ -62,7 +61,7 @@ const Profile = () => {
           <br />
           <div className=" pl-2 pr-2 flex flex-col items-center">
             <form onSubmit={(e) => handleSubmit(e)}>
-              <label htmlFor="avatar">Upload Picture</label>
+              <label htmlFor="avatar"> Upload Picture - .JPEG or .PNG </label>
               <input
                 className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
                 type="file"
