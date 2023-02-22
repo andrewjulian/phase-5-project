@@ -8,6 +8,7 @@ import StudentCourses from "./components/StudentCourses";
 import Profile from "./components/Profile";
 import CourseCatalog from "./components/CourseCatalog";
 import TeacherCourses from "./components/TeacherCourses";
+import Classroom from "./components/Classroom";
 
 import { UserContext } from "./context/userContext";
 
@@ -50,6 +51,7 @@ function App() {
         <Routes>
           <Route path="/profile" element={<Profile />} />
           <Route path="/mycourses" element={<TeacherCourses />} />
+          <Route path="/mycourses/:name" element={<Classroom />} />
           <Route path="*" element={<Navigate to="/mycourses" replace />} />
         </Routes>
       </div>
@@ -63,6 +65,7 @@ function App() {
         <Routes>
           <Route path="/mycourses" element={<StudentCourses />} />
           <Route path="/coursecatalog" element={<CourseCatalog />} />
+          <Route path="/mycourses/:name" element={<Classroom />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<Navigate to="/mycourses" replace />} />
         </Routes>

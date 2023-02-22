@@ -4,5 +4,6 @@ class ClassroomSerializer < ActiveModel::Serializer
   belongs_to :teacher
   has_many :enrollments
   has_many :students, through: :enrollments
+  has_many :messages
   
 end

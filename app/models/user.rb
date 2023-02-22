@@ -1,8 +1,9 @@
 class User < ApplicationRecord
 
-  has_secure_password
-
+  has_secure_password 
   has_one_attached :image
+
+  has_many :messages
 
   validates :email, presence: true
   validates :email, uniqueness: true
