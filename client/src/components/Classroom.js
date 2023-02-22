@@ -5,13 +5,11 @@ const Classroom = () => {
   const location = useLocation();
   const data = location.state?.data;
 
-  console.log("location", location);
-
-  console.log("data", data);
-
-  //console.log(state.classroom.id);
-
-  return <div>Classroom</div>;
+  return (
+    <div>
+      <h1>{data.name}</h1>
+    </div>
+  );
 };
 
 export default Classroom;

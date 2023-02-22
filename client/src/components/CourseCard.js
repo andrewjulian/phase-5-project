@@ -5,8 +5,6 @@ import { NavLink as Link } from "react-router-dom";
 const CourseCard = ({ unEnroll, classroom, handleDeleteClass }) => {
   const [currentUser] = useContext(UserContext);
 
-  console.log(classroom.name);
-
   const [classData, setClassData] = useState(classroom);
 
   if (currentUser.type === "Student") {
@@ -18,7 +16,12 @@ const CourseCard = ({ unEnroll, classroom, handleDeleteClass }) => {
         </div>
         <div className="px-6 pt-4 pb-2">
           <button className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 hover:bg-blue-500 hover:text-white">
-            Chatroom
+            <Link
+              to={`/mycourses/${classroom.name}`}
+              state={{ data: classData }}
+            >
+              Chatroom
+            </Link>
           </button>
           <button
             onClick={() => unEnroll(classroom.id)}
