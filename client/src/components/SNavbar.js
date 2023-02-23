@@ -17,7 +17,7 @@ const SNavbar = () => {
   }
 
   return (
-    <nav className="bg-white border-gray-200 px-2 py-2.5 rounded">
+    <nav className="bg-white border-gray-200 py-2.5 rounded">
       <div className="container flex place-items-center justify-between mx-auto">
         <div className="container flex flex-wrap">
           <img

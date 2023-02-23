@@ -17,7 +17,7 @@ const TNavbar = () => {
   }
 
   return (
-    <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
+    <nav className="bg-white border-gray-200 sm:px-4 py-2.5 rounded dark:bg-gray-900">
       <div className="container flex place-items-center justify-between mx-auto">
         <div className="container flex flex-wrap">
           <img
