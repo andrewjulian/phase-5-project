@@ -60,7 +60,7 @@ const Classroom = () => {
             onChange={(e) => setMessageBody(e.target.value)}
           />
           <button
-            className="my-2 mx-4 border-white border-2 p-1 rounded-md"
+            className="my-2 mx-4 hover:bg-white hover:text-blue-500 border-white border-2 p-1 rounded-md"
             type="submit"
           >
             Send
