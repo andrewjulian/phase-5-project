@@ -18,13 +18,16 @@ const Classroom = () => {
 
   return (
     <div>
-      <div className="sm:container border-2 border-blue-500 rounded-md mx-auto p-2">
+      <h1 className=" text-center text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+        {data.name} Chatroom
+      </h1>
+      <div className="w-1/2 h-96 mt-10 border-2 border-blue-500 rounded-md mx-auto">
         Sample
       </div>
-      <div className="sm:container border-2 border-blue-500 bg-blue-500 text-white rounded-md mx-auto px-2">
+      <div className="w-1/2 border-2 border-blue-500 bg-blue-500 text-white rounded-md mx-auto px-2">
         <form onSubmit={handleSubmit}>
           <input
-            className="border-2 border-white rounded-md text-black w-5/6 ml-20 pl-2"
+            className="border-2 border-white rounded-md text-black w-3/4 ml-20 pl-2"
             type="text"
             name="message"
             value={messageBody}
