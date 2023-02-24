@@ -6,14 +6,40 @@ const Classroom = () => {
   const location = useLocation();
   const data = location.state?.data;
 
-  const [currentUser, setCurrentUser, errors, setErrors] =
-    useContext(UserContext);
+  const [
+    currentUser,
+    setCurrentUser,
+    errors,
+    setErrors,
+    messages,
+    setMessages,
+  ] = useContext(UserContext);
 
-  const [messageBody, setMessageBody] = useState("");
+  const [body, setMessageBody] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("submit!");
+    console.log(body);
+
+    fetch("/messages", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        body,
+        classroom_id: data.id,
+      }),
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((data) => {
+          console.log(data);
+        });
+      } else {
+        res.json().then((err) => setErrors(err.errors));
+        console.log(errors);
+      }
+    });
   }
 
   return (
@@ -30,7 +56,7 @@ const Classroom = () => {
             className="border-2 border-white rounded-md text-black w-3/4 ml-20 pl-2"
             type="text"
             name="message"
-            value={messageBody}
+            value={body}
             onChange={(e) => setMessageBody(e.target.value)}
           />
           <button
