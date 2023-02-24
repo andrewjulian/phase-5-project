@@ -24,7 +24,7 @@ const Classroom = () => {
       <div className="w-1/2 h-96 mt-10 border-2 border-blue-500 rounded-md mx-auto">
         Sample
       </div>
-      <div className="w-1/2 border-2 border-blue-500 bg-blue-500 text-white rounded-md mx-auto px-2">
+      <div className="w-1/2 border-2 border-blue-500 bg-blue-500 text-white rounded-md mx-auto ">
         <form onSubmit={handleSubmit}>
           <input
             className="border-2 border-white rounded-md text-black w-3/4 ml-20 pl-2"
