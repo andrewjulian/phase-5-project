@@ -6,14 +6,7 @@ const Classroom = () => {
   const location = useLocation();
   const data = location.state?.data;
 
-  const [
-    currentUser,
-    setCurrentUser,
-    errors,
-    setErrors,
-    messages,
-    setMessages,
-  ] = useContext(UserContext);
+  const [errors, setErrors, messages, setMessages] = useContext(UserContext);
 
   const [body, setMessageBody] = useState("");
 
@@ -33,7 +26,7 @@ const Classroom = () => {
     }).then((res) => {
       if (res.ok) {
         res.json().then((data) => {
-          console.log(data);
+          setMessages([...messages, data]);
         });
       } else {
         res.json().then((err) => setErrors(err.errors));
