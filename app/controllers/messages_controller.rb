@@ -2,13 +2,24 @@ class MessagesController < ApplicationController
 
   def create
     user = User.find_by(id: session[:user_id])
-    message = user.messages.create!(messages_params)
-    render json: message, status: :created
+    @message = user.messages.new(messages_params)
+
+    if @message.save
+      render json: @message, status: :created, location: @message
+    else
+      render json: @message.errors, status: :unprocessable_entity
+    end
   end
 
   def index
     messages = Message.all
     render json: messages
+  end
+
+  def classroommessages
+    classroom = Classroom.find_by(id: params[:classroomId])
+    allmessages = classroom.messages
+    render json: allmessages
   end
 
   private
@@ -17,8 +28,9 @@ class MessagesController < ApplicationController
     render json:{error: invalid.record.errors}, status: :unprocessable_entity
   end
 
+
   def messages_params
-    params.permit(:id, :classroom_id, :body)
+    params.require(:message).permit(:id, :classroom_id, :user_id, :body)
   end
 
 end
