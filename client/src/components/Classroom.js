@@ -6,9 +6,12 @@ const Classroom = () => {
   const location = useLocation();
   const data = location.state?.data;
 
-  const [errors, setErrors, messages, setMessages] = useContext(UserContext);
-
+  const [messages, setMessages] = useState([]);
+  const [errors, setErrors] = useContext(UserContext);
   const [body, setMessageBody] = useState("");
+
+  //messagse will be a fetch of messages for this classroom only
+  //will use setMessages initially for the fetch, then also for the update
 
   function handleSubmit(e) {
     e.preventDefault();
