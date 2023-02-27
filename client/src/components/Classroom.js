@@ -58,6 +58,16 @@ function Classroom() {
     setMessagesAndScroll([...messages, newMessage]);
   };
 
+  ws.close = () => {
+    JSON.stringify({
+      command: "unsubscribe",
+      identifier: JSON.stringify({
+        channel: data.name,
+        id: currentUser.id,
+      }),
+    });
+  };
+
   function setMessagesAndScroll(data) {
     setMessages(data);
     resetScroll();
