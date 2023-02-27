@@ -39,7 +39,7 @@ function Classroom() {
       JSON.stringify({
         command: "subscribe",
         identifier: JSON.stringify({
-          channel: "ChatChannel",
+          channel: data.name,
           id: currentUser.id,
         }),
       })
