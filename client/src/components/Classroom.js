@@ -2,11 +2,10 @@ import React, { useState, useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { UserContext } from "../context/userContext";
 
-const Classroom = () => {
-  const ws = new WebSocket("ws://localhost:3000/cable");
+const ws = new WebSocket("ws://localhost:3000/cable");
 
+function Classroom() {
   const messagesContainer = document.getElementById("messages");
-
   const [currentUser] = useContext(UserContext);
 
   const location = useLocation();
@@ -16,6 +15,22 @@ const Classroom = () => {
   const [messages, setMessages] = useState([]);
   const [errors, setErrors] = useContext(UserContext);
   const [messageBody, setMessageBody] = useState("");
+
+  useEffect(() => {
+    fetchMessages();
+  }, [fetchMessages]);
+
+  useEffect(() => {
+    resetScroll();
+  }, [messages]);
+
+  function fetchMessages() {
+    fetch(`/classroom/messages/${classroomId}`).then((res) => {
+      if (res.ok) {
+        res.json().then((dbmessages) => setMessagesAndScroll(dbmessages));
+      }
+    }, []);
+  }
 
   ws.onopen = () => {
     console.log("connected to websocket server");
@@ -43,16 +58,12 @@ const Classroom = () => {
     setMessagesAndScroll([...messages, newMessage]);
   };
 
-  useEffect(() => {
-    fetch(`/classroom/messages/${classroomId}`).then((res) => {
-      if (res.ok) {
-        res.json().then((dbmessages) => setMessagesAndScroll(dbmessages));
-      }
-    });
-  }, [setMessages, classroomId]);
-
   function setMessagesAndScroll(data) {
     setMessages(data);
+    resetScroll();
+  }
+
+  function resetScroll() {
     if (!messagesContainer) return;
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
   }
@@ -83,7 +94,7 @@ const Classroom = () => {
       <p> User ID: {currentUser.id}</p>
       <div
         id="messages"
-        className="w-1/2 h-96 mt-10 border-2 border-blue-500 rounded-md mx-auto"
+        className="w-1/2 h-96 mt-10 border-2 border-blue-500 rounded-md mx-auto overflow-y-scroll"
       >
         {messages.map((message) => (
           <div key={message.id}>
@@ -110,6 +121,6 @@ const Classroom = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Classroom;
