@@ -9,18 +9,26 @@ class ClassroomsController < ApplicationController
 
   def create
     user = User.find_by(id: session[:user_id])
-    newClassroom = user.classrooms.create!(classroom_params)
-    render json: newClassroom, status: :created
+    if user.type === "Teacher"
+      newClassroom = user.classrooms.create!(classroom_params)
+      render json: newClassroom, status: :created
+    else
+      render json: { error: "Access Denied" }, status: :not_found
+    end
   end
 
   def remove
     user = User.find_by(id: session[:user_id])
-    classroom = user.classrooms.find(params[:deletedClassId])
-    if classroom
-      classroom.destroy
-      render json: classroom
-    else 
-      render json: { error: "Classroom not found" }, status: :not_found
+    if user.type === "Teacher"
+      classroom = user.classrooms.find(params[:deletedClassId])
+      if classroom
+        classroom.destroy
+        render json: classroom
+      else 
+        render json: { error: "Classroom not found" }, status: :not_found
+      end
+    else
+      render json: { error: "Access Denied" }, status: :not_found
     end
   end
 
