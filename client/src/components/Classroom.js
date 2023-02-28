@@ -101,14 +101,34 @@ function Classroom() {
       <h1 className=" text-center text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
         {data.name} Chatroom
       </h1>
-      <p> User ID: {currentUser.id}</p>
+      <p className="text-center text-gray-900">
+        Logged In As: {currentUser.display_name}
+      </p>
       <div
         id="messages"
         className="w-1/2 h-96 mt-10 border-2 border-blue-500 rounded-md mx-auto overflow-y-scroll"
       >
         {messages.map((message) => (
           <div key={message.id}>
-            <p>{message.body}</p>
+            <div className="py-1">
+              <div className=" float-left shadow mx-1 h-5 w-5 rounded-full overflow-hidden border-1 ">
+                <img
+                  className="object-cover w-full h-full"
+                  src={
+                    message.user.image
+                      ? message.user.image
+                      : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                  }
+                  alt="user's avatar"
+                />
+              </div>
+              <p>
+                <span className="text-blue-500 font-bold">
+                  {message.user.display_name}
+                </span>
+                : {message.body}
+              </p>
+            </div>
           </div>
         ))}
       </div>
