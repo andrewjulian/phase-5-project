@@ -6,7 +6,7 @@
 
 ## Description
 
-This single-page-application (SPA) uses a REACT front-end and a RAILS API with a PostgreSQL database to create a chat based application.
+This single-page-application (SPA) uses a REACT front-end and a RAILS API with a PostgreSQL database to create a chat based application that can be used for remote or asynchronous instructional support, communication, and collaboration.
 
 The objective of the application is for users to be able to communicate with other members of a class or course. Users that are teachers can create classrooms to which students are able to enroll from the course catalog. Once created (or enrolled) the users can communicate with other members of that class in a chatroom for that class.
 
