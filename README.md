@@ -6,9 +6,13 @@
 
 ## Description
 
-This single-page-application (SPA) uses a REACT front-end and a RAILS back-end with a PostgreSQL database to create a forum style application that allows users to signup/login in order to create questions associated with a course. Once questions are created users can add comments to either their own questions or questions created by others.
+This single-page-application (SPA) uses a REACT front-end and a RAILS API with a PostgreSQL database to create a chat based application.
 
-Additional features for users include the ability to HIDE their question from the "open questions" page, where others can see questions that are open for comments. In addition, only users can delete or hide questions that they created. These permissions are not afforded to other users.
+The objective of the application is for users to be able to communicate with other members of a class or course. Users that are teachers can create classrooms to which students are able to enroll from the course catalog. Once created (or enrolled) the users can communicate with other members of that class in a chatroom for that class.
+
+There are unique chatrooms for each class, allowing students to be enrolled in many classes and participate in class specific chats, as well as teachers being able to create classrooms, as well as participate in the chatrooms with their students.
+
+A video tour of the interface and features can be found HERE --> <<link>>
 
 ## Stack and Requirements
 
