@@ -25,7 +25,6 @@ class UsersController < ApplicationController
     render json: user
   end
 
-
   private
 
   def render_unprocessable_entity(invalid)
