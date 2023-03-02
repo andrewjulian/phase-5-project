@@ -2,7 +2,7 @@
 
 # Project: AsyncEdu
 
-![Alt text](relative%20path/to/client/public/asyncedu_logo.png "Title")
+![plot](/Users/andrewsm1/Development/code/phase-5/phase-5-project/client/public/asyncedu_logo.png)
 
 ## Description
 
