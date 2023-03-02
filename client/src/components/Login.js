@@ -106,6 +106,11 @@ const Login = () => {
                 Sign up
               </Link>
             </form>
+            {errors.map((err) => (
+              <p className="font-bold text-red-500" key={err}>
+                {err}
+              </p>
+            ))}
           </div>
         </div>
       </div>
