@@ -5,8 +5,10 @@ class UsersController < ApplicationController
 
   def create
     user = User.create!(user_params)
-    session[:user_id] = user.id
-    render json: user, status: :accepted
+    if user
+      session[:user_id] = user.id
+      render json: user, status: :accepted
+    end
   end
 
   def show
@@ -28,7 +30,7 @@ class UsersController < ApplicationController
   private
 
   def render_unprocessable_entity(invalid)
-    render json:{errors: [invalid.record.errors]}, status: :unprocessable_entity
+    render json:{ errors: ["Email  or Display Name Already Used for Account"]}, status: :unprocessable_entity
   end
 
   def user_params
@@ -40,3 +42,5 @@ class UsersController < ApplicationController
   end
 
 end
+
+

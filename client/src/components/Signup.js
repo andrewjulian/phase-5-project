@@ -38,7 +38,6 @@ const Signup = () => {
         });
       } else {
         res.json().then((err) => setErrors(err.errors));
-        console.log(errors);
       }
     });
 
