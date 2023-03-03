@@ -13,7 +13,7 @@ class ClassroomsController < ApplicationController
       newClassroom = user.classrooms.create!(classroom_params)
       render json: newClassroom, status: :created
     else
-      render json: { error: "Access Denied" }, status: :not_found
+      render json: { errors: ["Access Denied"] }, status: :unauthorized
     end
   end
 
@@ -35,7 +35,7 @@ class ClassroomsController < ApplicationController
   private
 
   def render_unprocessable_entity(invalid)
-    render json:{error: invalid.record.errors}, status: :unprocessable_entity
+    render json: { errors: ["Complete all fields"] }, status: :unauthorized
   end
 
   def classroom_params

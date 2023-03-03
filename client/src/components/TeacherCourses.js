@@ -119,6 +119,11 @@ const TeacherCourses = () => {
             >
               Create!
             </button>
+            {errors.map((err) => (
+              <p className="font-bold text-red-500" key={err}>
+                {err}
+              </p>
+            ))}
           </form>
         </div>
         {displayClassrooms}
