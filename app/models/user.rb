@@ -17,7 +17,7 @@ class User < ApplicationRecord
 
       acceptable_types = ["image/jpeg", "image/png"]
       unless acceptable_types.include?(image.content_type)
-          errors.add(:image, "must be a JPEG or PNG")
+         render json: { errors: ["Must be jpeg or png"] }, status: :unauthorized
       end
 
   end

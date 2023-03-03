@@ -12,6 +12,7 @@ const Login = () => {
   const [currentUser, setCurrentUser] = useContext(UserContext);
 
   function handleLoginSubmit(e) {
+    setErrors([]);
     e.preventDefault();
     fetch("/login", {
       method: "POST",

@@ -2,11 +2,11 @@ import React, { useState, useContext } from "react";
 import { UserContext } from "../context/userContext";
 
 const Profile = () => {
-  const [currentUser, setCurrentUser, errors, setErrors] =
-    useContext(UserContext);
+  const [currentUser, setCurrentUser] = useContext(UserContext);
 
   const [selectedFile, setSelectedFile] = useState(null);
   const [updateProfile, setUpdateProfile] = useState(false);
+  const [errors, setErrors] = useState([]);
 
   const { display_name, type } = currentUser;
 
@@ -28,10 +28,10 @@ const Profile = () => {
       if (res.ok) {
         res.json().then((newUser) => {
           setCurrentUser(newUser);
+          setErrors([]);
         });
       } else {
-        res.json().then((err) => setErrors(err.errors));
-        console.log(errors);
+        res.json().then(() => setErrors(["Must be jpeg or png"]));
       }
     });
   }
@@ -83,6 +83,11 @@ const Profile = () => {
               >
                 Back to Profile
               </button>
+              {errors.map((err) => (
+                <p className="font-bold text-red-500" key={err}>
+                  {err}
+                </p>
+              ))}
             </form>
           </div>
         </div>

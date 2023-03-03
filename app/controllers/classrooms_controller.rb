@@ -25,10 +25,10 @@ class ClassroomsController < ApplicationController
         classroom.destroy
         render json: classroom
       else 
-        render json: { error: "Classroom not found" }, status: :not_found
+        render json: { errors: "Classroom not found" }, status: :not_found
       end
     else
-      render json: { error: "Access Denied" }, status: :not_found
+      render json: { errors: "Access Denied" }, status: :not_found
     end
   end
 

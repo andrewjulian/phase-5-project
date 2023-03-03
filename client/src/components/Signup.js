@@ -168,6 +168,11 @@ const Signup = () => {
               >
                 Log In
               </Link>
+              {errors.map((err) => (
+                <p className="font-bold text-red-500" key={err}>
+                  {err}
+                </p>
+              ))}
             </form>
           </div>
         </div>
