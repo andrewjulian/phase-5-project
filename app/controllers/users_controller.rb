@@ -5,6 +5,8 @@ class UsersController < ApplicationController
 
   def create
     user = User.create!(user_params)
+  rescue ActiveRecord::RecordInvalid => e
+    render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
     if user
       session[:user_id] = user.id
       render json: user, status: :accepted
@@ -28,10 +30,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def render_unprocessable_entity(invalid)
-    render json:{ errors: ["Email  or Display Name Already Used for Account"]}, status: :unprocessable_entity
-  end
 
   def user_params
     params.permit(:id, :email, :password, :display_name, :type)

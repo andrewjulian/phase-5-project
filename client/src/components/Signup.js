@@ -167,11 +167,13 @@ const Signup = () => {
               >
                 Log In
               </Link>
-              {errors.map((err) => (
-                <p className="font-bold text-red-500" key={err}>
-                  {err}
-                </p>
-              ))}
+              {errors.length > 0 && (
+                <ul style={{ color: "red" }}>
+                  {errors.map((error) => (
+                    <li key={error}>{error}</li>
+                  ))}
+                </ul>
+              )}
             </form>
           </div>
         </div>

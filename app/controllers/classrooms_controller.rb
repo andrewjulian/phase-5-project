@@ -9,12 +9,10 @@ class ClassroomsController < ApplicationController
 
   def create
     user = User.find_by(id: session[:user_id])
-    if user.type === "Teacher"
-      newClassroom = user.classrooms.create!(classroom_params)
-      render json: newClassroom, status: :created
-    else
-      render json: { errors: ["Access Denied"] }, status: :unauthorized
-    end
+    newClassroom = user.classrooms.create!(classroom_params)
+    render json: newClassroom, status: :created
+    rescue ActiveRecord::RecordInvalid => e
+      render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
   end
 
   def remove

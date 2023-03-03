@@ -27,10 +27,10 @@ const Login = () => {
       if (r.ok) {
         r.json().then((user) => {
           setCurrentUser(user);
+          setErrors([]);
         });
       } else {
         r.json().then((err) => setErrors(err.errors));
-        console.log(errors);
       }
     });
     setEmail("");
@@ -106,12 +106,14 @@ const Login = () => {
               >
                 Sign up
               </Link>
+              {errors.length > 0 && (
+                <ul style={{ color: "red" }}>
+                  {errors.map((error) => (
+                    <li key={error}>{error}</li>
+                  ))}
+                </ul>
+              )}
             </form>
-            {errors.map((err) => (
-              <p className="font-bold text-red-500" key={err}>
-                {err}
-              </p>
-            ))}
           </div>
         </div>
       </div>
