@@ -12,7 +12,8 @@ The objective of the application is for users to be able to communicate with oth
 
 There are unique chatrooms for each class, allowing students to be enrolled in many classes and participate in class specific chats, as well as teachers being able to create classrooms, as well as participate in the chatrooms with their students.
 
-A video tour of the interface and features can be found HERE --> <<link>>
+A video tour of the interface and features can be found below:
+[label](../../../../Desktop/AsyncEdu%20Feature%20Video.mp4)
 
 ## Stack and Requirements
 
